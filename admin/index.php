@@ -8,7 +8,6 @@ if ($_SESSION['JILKquien']!='yes') {header("Location: ../index.php");}
 <?php
 include '../includes/head.php';
 include '../includes/conex.php';
-
 if ($_POST['Kque']=='modi') {
   $consulta="UPDATE `kurso` SET `Kurso` = '".$_POST['Kurso']."',`Kcod` = '".$_POST['nKcod']."' WHERE `kurso`.`Kcod` = '".$_POST['Kcod']."'";
 //echo $consulta;
@@ -19,7 +18,6 @@ if ($_POST['Kque']=='borra') {
   $consulta="DELETE FROM `kurso` WHERE `kurso`.`Kcod` = '".$_POST['Kcod']."'";
   $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos DE ENTRADA");
 }
-
 ?>
 </head>
 <body>
@@ -28,8 +26,8 @@ if ($_POST['Kque']=='borra') {
 <div class="container theme-showcase" role="main">
 
 
-  <h3>no muestra</h3>
-    <h3>BUSCAR</h3>
+  <h3><span class="glyphicon glyphicon-print" aria-hidden="true"> </span> IMPRESO Fecha: <?php echo date("d-m-Y H:i:s");  ?></h3>
+    <h3><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Estadísticas </h3>
       <form class="form-inline" action="#" method="post">
           <input type="text" class="form-control" name ="find" id="find" value='<?php echo $_POST['find']; ?>'>
           <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> </button>
@@ -57,9 +55,7 @@ if ($_POST['Kque']=='borra') {
                      <tbody>
               <!--      <div class="alert alert-success" role="alert">       <strong>BUSQUEDA:</strong> <?php echo $_POST['find'] ?>      </div> -->
  <?php
-
 //VARIABLES TOTALES INICIAR
-
 $ScItotal=0;
 $ScIact=0;
 $ScIacts=0;
@@ -68,7 +64,6 @@ $ScIest=0;
 $ScIdest=0;
 $ScIdual=0;
 //VARIABLES TOTALES INICIAR
-
                     // echo $_POST['find'];
                       $consulta = "select * from kurso  WHERE MATCH (Kcod,Kurso) AGAINST ('".$_POST['find']."' IN BOOLEAN MODE)";
                   //    echo $consulta;
@@ -78,6 +73,16 @@ $ScIdual=0;
                        $Kurso=$columna['Kurso'];
                        $KursoM=str_replace('Fami','<b class="text-danger">Fami</b>',$Kurso);
                        $KursoM=str_replace('Grad','<b class="text-danger">Grad</b>',$KursoM);
+
+
+
+                       //CONTAR ALUMNO
+                      $nalumnos='SELECT count(Idni) as numero FROM `ik` WHERE `Kcod`="'.$Kcod.'"';
+                      //echo $nalumnos;
+                      $resultadoA = mysqli_query( $conexion, $nalumnos ) or die ( "Algo ha ido mal en la consulta a la base de datos DE ENTRADA");
+                      while ($colum = mysqli_fetch_array( $resultadoA )) { $Nalumnos=$colum['numero'];        }
+
+                      //CONTAR ALUMNOS
 ?>
 
 <tr>
@@ -86,9 +91,12 @@ $ScIdual=0;
 
   <td ><?php echo $KursoM; ?>
 
-  <a  role="button" data-toggle="collapse" href="#collapse3<?php echo $Kcod; ?>" aria-expanded="false" aria-controls="collapseExample"> <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
-  <a  role="button" data-toggle="collapse" href="#collapse<?php echo $Kcod; ?>" aria-expanded="false" aria-controls="collapseExample"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-  <a  role="button" data-toggle="collapse" href="#collapse2<?php echo $Kcod; ?>" aria-expanded="false" aria-controls="collapseExample"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+  <a  role="button" data-toggle="collapse" href="#collapse3<?php echo $Kcod; ?>" aria-expanded="false" aria-controls="collapseExample">
+    <span class="badge"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $Nalumnos; ?></span></a>
+  <a  role="button" data-toggle="collapse" href="#collapse<?php echo $Kcod; ?>" aria-expanded="false" aria-controls="collapseExample">
+    <span class="badge"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></span></a>
+  <a  role="button" data-toggle="collapse" href="#collapse2<?php echo $Kcod; ?>" aria-expanded="false" aria-controls="collapseExample">
+    <span class="badge"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></span></a>
 
 
    <div class="collapse" id="collapse<?php echo $Kcod; ?>">
@@ -211,9 +219,7 @@ $ScIdual=0;
                              //echo $consulta2;
                              $resultado2 = mysqli_query( $conexion, $consulta2 ) or die ( "Algo ha ido mal en la BUSQUEDA DE ALUMNOS");
                              while ($columna2 = mysqli_fetch_array( $resultado2 )) {
-
                             $cItotal++;
-
                              $Idni=$columna2['Idni'];
                              $Inombrea=$columna2['Inombrea'];
                              $Imail=$columna2['Imail'];
@@ -226,7 +232,6 @@ $ScIdual=0;
                              $Iacts=$columna2['Iacts'];
                              $Iest=$columna2['Iest'];
                              $Idest=$columna2['Idest'];
-
                              ?>
                              <tr>
                                <td><small>
@@ -278,7 +283,6 @@ $ScIdual=0;
                               </tr>
                              <?php
                            } //alumnos de cada curl_multi_setopt
-
                            //VARIABLES TOTALES
                            $ScItotal=$ScItotal+$cItotal;
                            $ScIact=$ScIact+$cIact;
@@ -287,16 +291,13 @@ $ScIdual=0;
                            $ScIest=$ScIest+$cIest;
                            $ScIdest=$ScIdest+$cIdest;
                            $ScIdual=$ScIdual+$cIdual;
-
                            //VARIABLES TOTALES
-
-
-
-
                              ?>
                              <tr class="info text-center" ><td></td><td></td><td></td>
 
-                               <td ><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"><?php echo ' '.$cItotal; ?></td>
+                               <td >
+                                <span class="badge"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $cItotal; ?></span>
+                               </td>
                                <td><small><?php echo $cIdual; ?></small></td>
                                <td><small><?php echo $cIact; ?></small></td>
                                <td><small><?php echo $cIacts; ?></small></td>
@@ -306,7 +307,10 @@ $ScIdual=0;
                             <td></td></tr>
                             <tr class="danger text-center"><td></td><td></td><td></td>
 
-                              <td><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"><?php echo " 100%"; ?></td>
+                              <td>
+                                <span class="badge"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 100%</span>
+
+                              </td>
                               <td><small><?php echo round($cIdual*100/$cItotal,2).'%'; ?></small></td>
                               <td><small><?php echo round($cIact*100/$cItotal,2).'%'; ?></small></td>
                               <td><small><?php echo round($cIacts*100/$cItotal,2).'%'; ?></small></td>
@@ -343,13 +347,13 @@ $sal=' <table class="table table-condensed table-bordered">
       <th class="text-center">DT</th>
       <th class="text-center">ES</th>
       <th class="text-center">DE</th>
-
     </small>
      </tr>
    </thead>
  <tr class="text-center">
-
-   <td ><span class="glyphicon glyphicon-plus-sign" aria-hidden="true">'.$ScItotal.'</td>
+   <td >
+    <span class="badge"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> '.$ScItotal.'</span>
+   </td>
    <td><small>'. $ScIdual .'</small></td>
    <td><small>'. $ScIact .'</small></td>
    <td><small>'. $ScIacts .'</small></td>
@@ -358,7 +362,9 @@ $sal=' <table class="table table-condensed table-bordered">
    <td><small>'. $ScIdest .'</small></td>
 </tr>
 <tr class="danger text-center">
-     <td >100%</td>
+     <td >
+      <span class="badge"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 100%</span>
+    </td>
   <td><small>'. round($ScIdual*100/$ScItotal,2).'% </small></td>
   <td><small>'. round($ScIact*100/$ScItotal,2).'% </small></td>
   <td><small>'. round($ScIacts*100/$ScItotal,2).'% </small></td>
@@ -368,17 +374,18 @@ $sal=' <table class="table table-condensed table-bordered">
 </tr>
 </table>';
 
-if ($ScItotal!=0) {echo $sal;
+if ($ScItotal!=0) {echo $sal;}
 //PRUEBA DE INFORM DE TOTALES //PRUEBA DE INFORM DE TOTALES //PRUEBA DE INFORM DE TOTALES
  ?>
+ <!--
  <form action="../includes/mpdf.php" method="post" >
    <input type="hidden" class="form-control" id="pdf" value="<?php     echo htmlspecialchars($sal);     ?>" name="pdf">
    <button type="submit" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span> PDF</button>
  </form>
 
-<?php 
-}
- ?>
+ -->
+
+
 
 </div>
 </body>

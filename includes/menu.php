@@ -1,19 +1,21 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
-                <a class="navbar-brand" href="../admin/kursofind.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> JILK Txurdinaga</a>
+                <a class="navbar-brand" href="../admin/index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> JILK Txurdinaga</a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Kursos <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> CSV <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="../admin/kursocsv.php"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> Cargar CSV</a></li>
-              <li><a href="../admin/kursofind.php"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Buscar</a></li>
+              <li><a href="../admin/kursocsv.php"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> Cargar Cursos</a></li>
+              <li><a href="../admin/ikaslecsv.php"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> Cargar Ikasleak</a></li>
 
 
             </ul>
           </li>
+
+<!--
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Alumnos <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -23,7 +25,12 @@
 
             </ul>
           </li>
+
+-->
+
           <li class="active"><a href="../logout.php">Cerrar Sesion</a></li>
+
+<!--
           <li><a href="#about">mas</a></li>
           <li><a href="#contact">mas</a></li>
           <li class="dropdown">
@@ -38,6 +45,7 @@
               <li><a href="#">One more separated link</a></li>
             </ul>
           </li>
+    -->
         </ul>
       </div><!--/.nav-collapse -->
     </div>

@@ -16,7 +16,21 @@ include '../includes/conex.php';
 
            <script>
            tinymce.init({
-            selector: '#Icurri',
+             selector: '#Icurri',
+             language: 'es',
+             height: 500,
+             menubar: false,
+             plugins: [
+               'advlist autolink lists link image charmap print preview anchor',
+               'searchreplace visualblocks code fullscreen',
+               'insertdatetime media table contextmenu paste code'
+             ],
+             toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+             content_css: '//www.tinymce.com/css/codepen.min.css'
+           });
+
+           tinymce.init({
+            selector: '#Icurri_antiguo',
             language: 'es',
             height: 500,
             theme: 'modern',
@@ -170,11 +184,11 @@ while ($columna = mysqli_fetch_array( $resultado )) {
     <div  class="panel-heading" role="tab" id="headingOne">
       <h4  class="panel-title">
         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          <span class="glyphicon glyphicon-random" aria-hidden="true"></span>  DATOS CONTACTO
+          <span class="glyphicon glyphicon-random" aria-hidden="true"></span>  CONTACTO
         </a>
       </h4>
     </div>
-    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+    <div id="collapseOne" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
                       <div class="form-group">
                           <label for="exampleInputEmail1">Teléfonos</label>
@@ -192,7 +206,7 @@ while ($columna = mysqli_fetch_array( $resultado )) {
     <div class="panel-heading" role="tab" id="headingTwo">
       <h4 class="panel-title">
         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>  DATOS TRABAJO
+          <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>  SITUACION LABORAL
         </a>
       </h4>
     </div>
@@ -200,7 +214,7 @@ while ($columna = mysqli_fetch_array( $resultado )) {
       <div class="panel-body">
                     <div class="checkbox">
                       <label>
-                      <input type="checkbox" name='Iact'  value='TRAB' <?php   if ($Iact=='TRAB') {echo "Checked";};     ?> > En Activo
+                      <input type="checkbox" name='Iact'  value='TRAB' <?php   if ($Iact=='TRAB') {echo "Checked";};     ?> > En Activo ?
                       </label>
                     </div>
 
@@ -211,12 +225,12 @@ while ($columna = mysqli_fetch_array( $resultado )) {
 
                     <div class="checkbox">
                       <label>
-                        <input type="checkbox" name='Iacts'  value='SI' <?php   if ($Iacts=='SI') {echo "Checked";};     ?> > Del Sector
+                        <input type="checkbox" name='Iacts'  value='SI' <?php   if ($Iacts=='SI') {echo "Checked";};     ?> > Empresa del Sector ?
                       </label>
                     </div>
                     <div class="checkbox">
                       <label>
-                      <input type="checkbox" name='Idact'  value='DTRAB' <?php   if ($Idact=='DTRAB') {echo "Checked";};     ?> > Demanda Activo
+                      <input type="checkbox" name='Idact'  value='DTRAB' <?php   if ($Idact=='DTRAB') {echo "Checked";};     ?> > Demandas Trabajo ?
                       </label>
                     </div>
       </div>
@@ -226,7 +240,7 @@ while ($columna = mysqli_fetch_array( $resultado )) {
     <div class="panel-heading" role="tab" id="headingThree">
       <h4 class="panel-title">
         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>  DATOS ESTUDIOS
+          <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>  SITUACION ACADEMICA
         </a>
       </h4>
     </div>
@@ -234,17 +248,39 @@ while ($columna = mysqli_fetch_array( $resultado )) {
       <div class="panel-body">
                       <div class="checkbox">
                         <label>
-                          <input type="checkbox" name='Iest'  value='ESTU' <?php   if ($Iest=='ESTU') {echo "Checked";};     ?> > Estudia
+                          <input type="checkbox" name='Iest'  value='ESTU' <?php   if ($Iest=='ESTU') {echo "Checked";};     ?> > EstudiaS ?
                         </label>
                       </div>
                       <div class="checkbox">
                         <label>
-                          <input type="checkbox" name='Idest'  value='DESTU' <?php   if ($Idest=='DESTU') {echo "Checked";};     ?> > Demanda Formaciòn
+                          <input type="checkbox" name='Idest'  value='DESTU' <?php   if ($Idest=='DESTU') {echo "Checked";};     ?> > DemandaS Formaciòn ?
                         </label>
                       </div>
       </div>
     </div>
   </div>
+
+<!--
+  <div class="panel panel-info">
+    <div class="panel-heading" role="tab" id="headingFour">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>  CURRICULUM VITAE
+        </a>
+      </h4>
+    </div>
+    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+      <div class="panel-body">
+                  <textarea id="Icurri" name="Icurri">
+                <?php     echo $Icurri;     ?>
+                  </textarea>
+      </div>
+    </div>
+  </div>
+
+-->
+
+
 </div>
 
 <!-- PROBANDO ACORDEON -->
@@ -253,6 +289,8 @@ while ($columna = mysqli_fetch_array( $resultado )) {
           <textarea id="Icurri" name="Icurri">
         <?php     echo $Icurri;     ?>
           </textarea>
+
+
 
       </form>
 
@@ -264,9 +302,15 @@ while ($columna = mysqli_fetch_array( $resultado )) {
 
 
 <!-- DPF -->
+<?php
+$apdf='<h2>CURRICULUM VITAE</h2>';
+$apdf=$apdf.$Idni.'<br>'.$Inombrea.'<br>'.$Imail.'<br>'.$Itelefono.'<br><br><br>'.$Icurri;
+
+ ?>
+<br>
   <form action="../includes/mpdf.php" method="post" >
-    <input type="hidden" class="form-control" id="pdf" value="<?php     echo $Icurri;     ?>" name="pdf">
-    <button type="submit" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span> PDF</button>
+    <input type="hidden" class="form-control" id="pdf" value="<?php     echo $apdf;     ?>" name="pdf">
+    <button type="submit" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span> PDF en pruebas</button>
   </form>
 
 

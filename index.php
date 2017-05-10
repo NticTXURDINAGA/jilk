@@ -8,7 +8,7 @@ if (strlen($_POST['JILKcorreo'])>0)
   if (($_POST['JILKcorreo']=='admin@fptxurdinaga.com') AND ($_POST['JILKdni']=='admin'))
   {
       $_SESSION['JILKquien']='yes';
-      header('Location: ./admin/kursofind.php');
+      header('Location: ./admin/index.php');
   }
   else
   {
