@@ -13,8 +13,8 @@ include '../includes/conex.php';
 <body>
 
 <?php include '../includes/menu.php'; ?>
-
-<div class="container theme-showcase" role="main">
+<div class="container-fluid" role="main">
+<!-- <div class="container theme-showcase" role="main"> -->
 
 
       <h3>no muestra</h3>

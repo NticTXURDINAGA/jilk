@@ -5,6 +5,16 @@ if ($_SESSION['JILKquien']!='yes') {header("Location: ../index.php");}
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
+  <script>
+  function printHTML() {
+    if (window.print) {
+      window.print();
+    }
+  }
+  </script>
+
+
 <?php
 include '../includes/head.php';
 include '../includes/conex.php';
@@ -23,11 +33,15 @@ if ($_POST['Kque']=='borra') {
 <body>
 
 <?php include '../includes/menu.php'; ?>
-<div class="container theme-showcase" role="main">
+<div class="container-fluid" role="main">
+<!-- <div class="container theme-showcase" role="main"> -->
 
 
   <h3><span class="glyphicon glyphicon-print" aria-hidden="true"> </span> IMPRESO Fecha: <?php echo date("d-m-Y H:i:s");  ?></h3>
-    <h3><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Estadísticas </h3>
+    <h3><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Estadísticas <a onclick="printHTML()"><span class="badge"><span class="glyphicon glyphicon-print" aria-hidden="true"></span></span></a> </h3>
+
+
+
       <form class="form-inline" action="#" method="post">
           <input type="text" class="form-control" name ="find" id="find" value='<?php echo $_POST['find']; ?>'>
           <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> </button>
