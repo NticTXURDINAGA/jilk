@@ -11,6 +11,13 @@ if (!isset($_SESSION['Idni'])) {header('Location: ../index.php');}
 include '../includes/head.php';
 include '../includes/conex.php';
 ?>
+<script>
+function activar(campo)
+{
+    var estadoActual = document.getElementById(campo);
+    estadoActual.disabled = !estadoActual.disabled;
+}
+</script>
 
 <script src='../tinymce/js/tinymce/tinymce.min.js'></script>
 
@@ -148,14 +155,14 @@ while ($columna = mysqli_fetch_array( $resultado )) {
 
           <p><button type="submit" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span> Guardar</button></p>
 
-          <!-- FECHA DE ACCESO -->
+          <!-- FECHA DE ACCESO
                      <div class="alert alert-warning alert-dismissible" role="alert">
                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                       <!-- fecha en formato ESPAÑOL date('d-m-Y',strtotime($Itime))-->
+
                        <strong>Última conexion:</strong> <?php     echo date('d-m-Y',strtotime($Itime));     ?>
                       <strong> Tipo:</strong> <?php     echo $Itipo;     ?>
                      </div>
-          <!-- FECHA DE ACCESO -->
+           FECHA DE ACCESO -->
 
 
           <div class="alert alert-info" role="alert">
@@ -214,23 +221,24 @@ while ($columna = mysqli_fetch_array( $resultado )) {
       <div class="panel-body">
                     <div class="checkbox">
                       <label>
-                      <input type="checkbox" name='Iact'  value='TRAB' <?php   if ($Iact=='TRAB') {echo "Checked";};     ?> > En Activo ?
+                      <input type="checkbox" name='Iact'  value='TRAB'  onclick="activar('Iemp');activar('Iacts')" <?php   if ($Iact=='TRAB') {echo "Checked";};     ?> > En Activo.
                       </label>
                     </div>
+
 
                     <div class="form-group">
                       <label for="exampleInputEmail1">Empresa</label>
-                      <input type="text" class="form-control" id="Iemp" value="<?php     echo $Iemp;     ?>" name="Iemp">
+                      <input type="text" class="form-control" id="Iemp" <?php if ($Iact!='TRAB') {echo 'disabled';};?> value="<?php     echo $Iemp;     ?>" name="Iemp">
                     </div>
 
                     <div class="checkbox">
                       <label>
-                        <input type="checkbox" name='Iacts'  value='SI' <?php   if ($Iacts=='SI') {echo "Checked";};     ?> > Empresa del Sector ?
+                        <input type="checkbox" name='Iacts' id='Iacts' <?php if ($Iact!='TRAB') {echo 'disabled';};?>  value='SI' <?php   if ($Iacts=='SI') {echo "Checked";};     ?> > Empresa del Sector.
                       </label>
                     </div>
                     <div class="checkbox">
                       <label>
-                      <input type="checkbox" name='Idact'  value='DTRAB' <?php   if ($Idact=='DTRAB') {echo "Checked";};     ?> > Demandas Trabajo ?
+                      <input type="checkbox" name='Idact' id='Idact' value='DTRAB' <?php   if ($Idact=='DTRAB') {echo "Checked";};     ?> > Demandas Trabajo.
                       </label>
                     </div>
       </div>
@@ -248,24 +256,24 @@ while ($columna = mysqli_fetch_array( $resultado )) {
       <div class="panel-body">
                       <div class="checkbox">
                         <label>
-                          <input type="checkbox" name='Iest'  value='ESTU' <?php   if ($Iest=='ESTU') {echo "Checked";};     ?> > EstudiaS ?
+                          <input type="checkbox" name='Iest'  value='ESTU' <?php   if ($Iest=='ESTU') {echo "Checked";};     ?> > Estudias.
                         </label>
                       </div>
                       <div class="checkbox">
                         <label>
-                          <input type="checkbox" name='Idest'  value='DESTU' <?php   if ($Idest=='DESTU') {echo "Checked";};     ?> > DemandaS Formaciòn ?
+                          <input type="checkbox" name='Idest'  value='DESTU' <?php   if ($Idest=='DESTU') {echo "Checked";};     ?> > DemandaS Formación.
                         </label>
                       </div>
       </div>
     </div>
   </div>
 
-<!--
+
   <div class="panel panel-info">
     <div class="panel-heading" role="tab" id="headingFour">
       <h4 class="panel-title">
         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-          <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>  CURRICULUM VITAE
+          <span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span>  CURRICULUM VITAE
         </a>
       </h4>
     </div>
@@ -278,19 +286,19 @@ while ($columna = mysqli_fetch_array( $resultado )) {
     </div>
   </div>
 
--->
+
 
 
 </div>
 
-<!-- PROBANDO ACORDEON -->
+<!-- PROBANDO ACORDEON
 
         <br>
           <textarea id="Icurri" name="Icurri">
         <?php     echo $Icurri;     ?>
           </textarea>
 
-
+-->
 
       </form>
 
