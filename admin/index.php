@@ -62,7 +62,8 @@ $ScIacts=0;
 $ScIdact=0;
 $ScIest=0;
 $ScIdest=0;
-$ScIdual=0;
+$ScIKdual=0;
+$ScIKcont=0;
 //VARIABLES TOTALES INICIAR
                     // echo $_POST['find'];
                       $consulta = "select * from kurso  WHERE MATCH (Kcod,Kurso) AGAINST ('".$_POST['find']."' IN BOOLEAN MODE)";
@@ -191,7 +192,8 @@ $ScIdual=0;
       $cIdact=0;
       $cIest=0;
       $cIdest=0;
-      $cIdual=0;
+      $cIKdual=0;
+      $cIKcont=0;
       ?>
      <div class="well well-sm">
 
@@ -203,6 +205,7 @@ $ScIdual=0;
                           <th class="text-center">NOMBRE</th>
                           <th class="text-center">E-mail</th>
                           <th class="text-center">Tel.</th>
+                          <th class="text-center">FCT</th>
                           <th class="text-center">DU</th>
                           <th class="text-center">TR</th>
                           <th class="text-center">TS</th>
@@ -225,6 +228,7 @@ $ScIdual=0;
                              $Imail=$columna2['Imail'];
                              $Icurri=$columna2['Icurri'];
                              $IKdual=$columna2['IKdual'];
+                             $IKcont=$columna2['IKcont'];
                              $Itime=$columna2['Itime'];
                              $Itelefono=$columna2['Itelefono'];
                              $Iact=$columna2['Iact'];
@@ -266,7 +270,8 @@ $ScIdual=0;
                                <td><small><?php echo $Inombrea; ?></small></td>
                                <td><small><?php echo $Imail; ?></small></td>
                                <td><small><?php echo $Itelefono; ?></small></td>
-                               <td class="text-center"><small><?php if ($IKdual=='DUAL') {$cIdual++; echo 'X';}  ?></small></td>
+                               <td class="text-center"><small><?php if ($IKcont=='SI') {$cIKcont++; echo 'X';}  ?></small></td>
+                               <td class="text-center"><small><?php if ($IKdual=='DUAL') {$cIKdual++; echo 'X';}  ?></small></td>
 
                                <td class="text-center"><small><?php if ($Iact=='TRAB') {$cIact++; echo 'X';}  ?></small></td>
                                <td class="text-center"><small><?php if ($Iacts=='SI') {$cIacts++; echo 'X';} ?></small></td>
@@ -290,7 +295,8 @@ $ScIdual=0;
                            $ScIdact=$ScIdact+$cIdact;
                            $ScIest=$ScIest+$cIest;
                            $ScIdest=$ScIdest+$cIdest;
-                           $ScIdual=$ScIdual+$cIdual;
+                           $ScIKdual=$ScIKdual+$cIKdual;
+                           $ScIKcont=$ScIKcont+$cIKcont;
                            //VARIABLES TOTALES
                              ?>
                              <tr class="info text-center" ><td></td><td></td><td></td>
@@ -298,7 +304,8 @@ $ScIdual=0;
                                <td >
                                 <span class="badge"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $cItotal; ?></span>
                                </td>
-                               <td><small><?php echo $cIdual; ?></small></td>
+                               <td><small><?php echo $cIKcont; ?></small></td>
+                               <td><small><?php echo $cIKdual; ?></small></td>
                                <td><small><?php echo $cIact; ?></small></td>
                                <td><small><?php echo $cIacts; ?></small></td>
                                <td><small><?php echo $cIdact; ?></small></td>
@@ -311,7 +318,8 @@ $ScIdual=0;
                                 <span class="badge"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 100%</span>
 
                               </td>
-                              <td><small><?php echo round($cIdual*100/$cItotal,2).'%'; ?></small></td>
+                              <td><small><?php echo round($cIKcont*100/$cItotal,2).'%'; ?></small></td>
+                              <td><small><?php echo round($cIKdual*100/$cItotal,2).'%'; ?></small></td>
                               <td><small><?php echo round($cIact*100/$cItotal,2).'%'; ?></small></td>
                               <td><small><?php echo round($cIacts*100/$cItotal,2).'%'; ?></small></td>
                               <td><small><?php echo round($cIdact*100/$cItotal,2).'%'; ?></small></td>
@@ -341,6 +349,7 @@ $sal=' <table class="table table-condensed table-bordered">
      <tr class="info text-center">
        <small>
       <th class="text-center">TOTALES</th>
+      <th class="text-center">FCT</th>
       <th class="text-center">DU</th>
       <th class="text-center">TR</th>
       <th class="text-center">TS</th>
@@ -354,7 +363,8 @@ $sal=' <table class="table table-condensed table-bordered">
    <td >
     <span class="badge"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> '.$ScItotal.'</span>
    </td>
-   <td><small>'. $ScIdual .'</small></td>
+   <td><small>'. $ScIKcont .'</small></td>
+   <td><small>'. $ScIKdual .'</small></td>
    <td><small>'. $ScIact .'</small></td>
    <td><small>'. $ScIacts .'</small></td>
    <td><small>'. $ScIdact.' </small></td>
@@ -365,7 +375,8 @@ $sal=' <table class="table table-condensed table-bordered">
      <td >
       <span class="badge"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 100%</span>
     </td>
-  <td><small>'. round($ScIdual*100/$ScItotal,2).'% </small></td>
+  <td><small>'. round($ScIKcont*100/$ScItotal,2).'% </small></td>
+  <td><small>'. round($ScIKdual*100/$ScItotal,2).'% </small></td>
   <td><small>'. round($ScIact*100/$ScItotal,2).'% </small></td>
   <td><small>'. round($ScIacts*100/$ScItotal,2).'% </small></td>
   <td><small>'.round($ScIdact*100/$ScItotal,2).'% </small></td>
