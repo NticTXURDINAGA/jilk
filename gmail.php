@@ -5,17 +5,14 @@ include "./phpmailer/class.phpmailer.php";
 include "./phpmailer/class.smtp.php";
 
 //SENDER
-$email_user = "guillermonnn@gmail.com";
-$email_password = "xxxxxxx";
-$from_name = "PUTO AMO ENVIADOR";
+$email_user = "jilk_no_replay@fptxurdinaga.com";
+$email_password = "Provisional123456";
+$from_name = "CIFP TXURDINAGA LHII (JILK)";
 //DESTINATARIO
 $address_to = "ntic@fptxurdinaga.com";
 
 
-
-
-
-$the_subject = "ASUNTO DE ENVIO LANPOLTSA";
+$the_subject = "NOTIFICACION JILK";
 
 
 $phpmailer = new PHPMailer();
@@ -34,10 +31,12 @@ $phpmailer->AddAddress($address_to); // recipients email
 $phpmailer->Subject = $the_subject;
 
 //CUERPO
-$phpmailer->Body .="<h1 style='color:#3498db;'><a href='http://www.fptxurdinaga.com' target='_blank'>Hola Mundo!</a></h1>";
-$phpmailer->Body .= "<p>Mensaje personalizado</p>";
-$phpmailer->Body .= "<p>Fecha y Hora: ".date("d-m-Y h:i:s")."</p>";
+$html .="<h1 style='color:#3498db;'><a href='http://www.fptxurdinaga.com' target='_blank'>Hola Mundo!</a></h1>";
+$html .= "<p>Mensaje personalizado</p>";
+$html .= "<p>Fecha y Hora: ".date("d-m-Y h:i:s")."</p>";
 
+
+$phpmailer->Body= $html;
 //ADJUNTOS
 $phpmailer->AddAttachment('./imagenes/logoTX.png','logoTX.png');
 

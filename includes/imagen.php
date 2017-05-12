@@ -80,17 +80,5 @@ switch($type){
 }
 
 
-$endfile="";
-  if(isset($_FILES['upload']['name'])){
-
-    $sourcefile= $_FILES['upload']['tmp_name'];
-    $endfile= $_FILES['upload']['name'];
-    $type=$_FILES['upload']['type'];
-
-    makeThumbnail($sourcefile, $max_width=100, $max_height=100, $endfile, $type);
-
-    //Insert into database the file name
-    //$query="insert into table values('$endfile')";
-  }
 
 ?>
