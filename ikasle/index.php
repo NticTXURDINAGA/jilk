@@ -36,30 +36,7 @@ function activar(campo)
              content_css: '//www.tinymce.com/css/codepen.min.css'
            });
 
-           tinymce.init({
-            selector: '#Icurri_antiguo',
-            language: 'es',
-            height: 500,
-            theme: 'modern',
-            plugins: [
-              'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-              'searchreplace wordcount visualblocks visualchars code fullscreen',
-              'insertdatetime media nonbreaking save table contextmenu directionality',
-              'emoticons template paste textcolor colorpicker textpattern imagetools codesample toc'
-            ],
-            toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-            toolbar2: 'print preview media | forecolor backcolor emoticons | codesample',
-            image_advtab: true,
-            templates: [
-              { title: 'Test template 1', content: 'Test 1' },
-              { title: 'Test template 2', content: 'Test 2' }
-            ],
-            content_css: [
-              '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-              '//www.tinymce.com/css/codepen.min.css'
-            ]
-           });
-          </script>
+           </script>
 
 </head>
 
@@ -221,21 +198,35 @@ while ($columna = mysqli_fetch_array( $resultado )) {
       <div class="panel-body">
                     <div class="checkbox">
                       <label>
-                      <input type="checkbox" name='Iact'  value='TRAB'  onclick="activar('Iemp');activar('Iacts')" <?php   if ($Iact=='TRAB') {echo "Checked";};     ?> > En Activo.
+                      <input type="checkbox" name='Iact'  value='TRAB'
+                          onclick="$('#collapseTRAB').collapse('toggle');activar('Iemp');activar('Iacts');"
+                          <?php   if ($Iact=='TRAB') {echo "Checked";};     ?>
+                          > En Activo.
                       </label>
+
+
+                      <div class="collapse <?php if ($Iact=='TRAB'){ echo "in";} ?>" id="collapseTRAB">
+                        <div class="well">
+                                    <div class="form-group">
+                                      <label> Empresa</label>
+                                      <input type="text" class="form-control" id="Iemp" <?php if ($Iact!='TRAB') {echo 'disabled';};?> value="<?php     echo $Iemp;     ?>" name="Iemp">
+                                    </div>
+
+                                    <div class="checkbox">
+                                      <label>
+                                        <input type="checkbox" name='Iacts' id='Iacts' <?php if ($Iact!='TRAB') {echo 'disabled';};?>  value='SI' <?php   if ($Iacts=='SI') {echo "Checked";};     ?> > Empresa del Sector.
+
+
+                                      </label>
+                                    </div>
+                        </div>
+                      </div>
+
+
                     </div>
 
 
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Empresa</label>
-                      <input type="text" class="form-control" id="Iemp" <?php if ($Iact!='TRAB') {echo 'disabled';};?> value="<?php     echo $Iemp;     ?>" name="Iemp">
-                    </div>
 
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox" name='Iacts' id='Iacts' <?php if ($Iact!='TRAB') {echo 'disabled';};?>  value='SI' <?php   if ($Iacts=='SI') {echo "Checked";};     ?> > Empresa del Sector.
-                      </label>
-                    </div>
                     <div class="checkbox">
                       <label>
                       <input type="checkbox" name='Idact' id='Idact' value='DTRAB' <?php   if ($Idact=='DTRAB') {echo "Checked";};     ?> > Demandas Trabajo.
@@ -279,6 +270,13 @@ while ($columna = mysqli_fetch_array( $resultado )) {
     </div>
     <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
       <div class="panel-body">
+              <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                <strong>Última conexion:</strong> <?php     echo date('d-m-Y',strtotime($Itime));     ?>
+                <p>Texto explicativo sobre la insercion del Curriculum y sobre temas de formato y demas .....bla bla bla...</p>
+               </div>
+
                   <textarea id="Icurri" name="Icurri">
                 <?php     echo $Icurri;     ?>
                   </textarea>
@@ -315,12 +313,14 @@ $apdf='<h2>CURRICULUM VITAE</h2>';
 $apdf=$apdf.$Idni.'<br>'.$Inombrea.'<br>'.$Imail.'<br>'.$Itelefono.'<br><br><br>'.$Icurri;
 
  ?>
+
+ <!--
 <br>
   <form action="../includes/mpdf.php" method="post" >
     <input type="hidden" class="form-control" id="pdf" value="<?php     echo $apdf;     ?>" name="pdf">
     <button type="submit" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span> PDF en pruebas</button>
   </form>
-
+-->
 
 </div>
   </body>
