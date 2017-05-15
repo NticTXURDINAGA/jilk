@@ -17,6 +17,10 @@ function activar(campo)
     var estadoActual = document.getElementById(campo);
     estadoActual.disabled = !estadoActual.disabled;
 }
+function guardar(idFormulario){
+        document.forms[idFormulario].submit();
+}
+
 </script>
 
 <script src='../tinymce/js/tinymce/tinymce.min.js'></script>
@@ -41,6 +45,23 @@ function activar(campo)
 </head>
 
 <?php
+
+//BUBIR FOTO
+
+
+if(isset($_FILES['upload']['name'])){
+
+  require "../includes/imagen.php";
+  $sourcefile= $_FILES['upload']['tmp_name'];
+  $endfile= "../tmp/".$_SESSION['Idni'];
+  $type=$_FILES['upload']['type'];
+
+  makeThumbnail($sourcefile, $max_width=150, $max_height=150, $endfile, $type);
+
+  //Insert into database the file name
+  //$query="insert into table values('$endfile')";
+	// echo '<img src="'.$endfile.'" />';
+}
 
 //poner fecha actual de acceso
 $current_date = date("Y-m-d H:i:s");
@@ -110,7 +131,7 @@ while ($columna = mysqli_fetch_array( $resultado )) {
 <body>
   <div class="container theme-showcase" role="main">
       <h3>no muestra</h3>
-      <form action="#" method="post" >
+
 
   <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
@@ -119,8 +140,11 @@ while ($columna = mysqli_fetch_array( $resultado )) {
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
+
         <!--    <li ><button type="submit" class="btn btn-link"><span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span> Guardar</button></li> -->
-            <li ><a href="../logout.php"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Cerrar Sesion</a></li>
+              <li ><a href='#' onclick="guardar('general');"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Guardar</a></li>
+
+              <li ><a href="../logout.php"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Cerrar Sesion</a></li>
 
           </ul>
         </div><!--/.nav-collapse -->
@@ -130,7 +154,12 @@ while ($columna = mysqli_fetch_array( $resultado )) {
  <img class="profilelogo-img" src="../imagenes/logoTX.png" alt="">
 
 
-          <p><button type="submit" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span> Guardar</button></p>
+
+
+
+
+
+      <!--    <p><button type="submit" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span> Guardar</button></p> -->
 
           <!-- FECHA DE ACCESO
                      <div class="alert alert-warning alert-dismissible" role="alert">
@@ -144,6 +173,28 @@ while ($columna = mysqli_fetch_array( $resultado )) {
 
           <div class="alert alert-info" role="alert">
             <h4><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $Inombrea; ?></h4>
+            <img id='imgfoto' class="img-rounded" src="../tmp/<?php echo $_SESSION['Idni']; ?>" />
+            <p><a  data-toggle="collapse" href="#verfoto" aria-expanded="false" aria-controls="verfoto" class="btn"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Cambiar foto </a></p>
+
+                  <div class="collapse" id="verfoto">
+                    <div class="well">
+                      <form  class="form-inline" action="#" enctype="multipart/form-data" method="post" id='foto'>
+
+                         <div class="form-group " >
+                           <p><input  type="file" id="exampleInputFile" name="upload"></p>
+                           <a href='#' onclick="guardar('foto');" class="btn"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Cambiar foto</a>
+                       </div>
+                      </form>
+                      <div class="alert alert-warning alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                              <p>Puede tardar unos segundos en mostrarse la nueva foto .....bla bla bla...</p>
+                       </div>
+                    </div>
+                  </div>
+
+
+
+            <br>
             <?php
               echo '<table class="table">';
                 $consulta = 'SELECT * from ik,kurso where kurso.Kcod=ik.Kcod AND Idni="'.$_SESSION['Idni'].'"';
@@ -157,11 +208,7 @@ while ($columna = mysqli_fetch_array( $resultado )) {
           </div>
 
 
-
-<!-- PROBANDO ACORDEON -->
-
-
-
+      <form action="#" method="post" id='general' >
 
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   <div class="panel panel-info" >
@@ -289,16 +336,9 @@ while ($columna = mysqli_fetch_array( $resultado )) {
 
 </div>
 
-<!-- PROBANDO ACORDEON
 
-        <br>
-          <textarea id="Icurri" name="Icurri">
-        <?php     echo $Icurri;     ?>
-          </textarea>
 
--->
-
-      </form>
+</form>
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -307,14 +347,14 @@ while ($columna = mysqli_fetch_array( $resultado )) {
     <script src="../bootstrap/js/bootstrap.min.js"></script>
 
 
-<!-- DPF -->
+<!-- DPF
 <?php
 $apdf='<h2>CURRICULUM VITAE</h2>';
 $apdf=$apdf.$Idni.'<br>'.$Inombrea.'<br>'.$Imail.'<br>'.$Itelefono.'<br><br><br>'.$Icurri;
 
  ?>
 
- <!--
+
 <br>
   <form action="../includes/mpdf.php" method="post" >
     <input type="hidden" class="form-control" id="pdf" value="<?php     echo $apdf;     ?>" name="pdf">

@@ -6,4 +6,4 @@
    <title>JILK - CIFP TXURDINAGA LHII</title>
    <!-- Bootstrap -->
    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-   <link rel="stylesheet" type="text/css" href="../css/estilos.css" media="screen" />
+   <link rel="stylesheet"  href="../css/estilos.css"  />

@@ -6,8 +6,7 @@
 
 	<?php
 
-require"../includes/imagen.php";
-
+require "../includes/imagen.php";
 
 if(isset($_FILES['upload']['name'])){
 
