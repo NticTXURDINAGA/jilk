@@ -70,8 +70,8 @@ if (!empty($datos[7])) {$datos[7]='SI';}
 if (!empty($datos[11])) {$datos[11]='DUAL';}
 
 
-$cikasle="INSERT INTO `ikasle` (`Idni`, `Inombrea`, `Imail`, `Itelefono`, `Iact`, `Iest`, `Idact`, `Idest`, `Iacts`, `Iemp`, `Itime`, `Itipo`, `Icurri`)
-VALUES ('".$datos[1]."','".$datos[2]."','".$datos[3]."','".$datos[4]."','".$datos[5]."','".$datos[9]."','".$datos[8]."','".$datos[10]."','".$datos[7]."','".$datos[6]."', NULL, NULL, NULL)";
+$cikasle="INSERT INTO `ikasle` (`Ipass`,`Idni`, `Inombrea`, `Imail`, `Itelefono`, `Iact`, `Iest`, `Idact`, `Idest`, `Iacts`, `Iemp`, `Itime`, `Itipo`, `Icurri`)
+VALUES ('".$datos[1]."','".$datos[1]."','".$datos[2]."','".$datos[3]."','".$datos[4]."','".$datos[5]."','".$datos[9]."','".$datos[8]."','".$datos[10]."','".$datos[7]."','".$datos[6]."', NULL, NULL, NULL)";
 //echo $cikasle."<br>";
 if (!mysqli_query($conexion,$cikasle)) { $Cerror=$Cerror.' ERROR ALUMNO: '.$datos[1].' '.$datos[2].' Posiblemente YA dado de alta.<br>';    }
 

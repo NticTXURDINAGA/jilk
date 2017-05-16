@@ -7,13 +7,13 @@ include "./includes/newmail.php";
 
 if (strlen($_POST['JILKcorreor'])>0)
 {
-  $consulta = 'SELECT Idni from ikasle where Imail="'.$_POST['JILKcorreor'].'"';
+  $consulta = 'SELECT Idni,Ipass from ikasle where Imail="'.$_POST['JILKcorreor'].'"';
   //echo $consulta;
   $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos DE COMPROBACION DE ALUMNO");
   // echo "PROBANDO ",$consulta;  //COMPROBACIONES !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1111
-  while ($columna = mysqli_fetch_array( $resultado )) { $Idni=$columna['Idni'];}
+  while ($columna = mysqli_fetch_array( $resultado )) { $Idni=$columna['Idni'];$Ipass=$columna['Ipass'];}
 
-  if ($Idni>0){  nuevomail('asuento enviado',$_POST['JILKcorreor'],'<h1>cuerpo</h1><p>FUNCIONA y es tu DNI es '.$Idni.'</p>');  }
+  if ($Idni>0){  nuevomail('asuento enviado',$_POST['JILKcorreor'],'<h1>cuerpo</h1><p>FUNCIONA y es tu CLAVE es '.$Ipass.'</p>');  }
 else {
   ?>
   <br>
@@ -39,7 +39,7 @@ if (strlen($_POST['JILKcorreo'])>0)
   }
   else
   {
-      $consulta = 'SELECT Idni from ikasle where Imail="'.$_POST['JILKcorreo'].'" AND Idni="'.$_POST['JILKdni'].'"';
+      $consulta = 'SELECT Idni from ikasle where Imail="'.$_POST['JILKcorreo'].'" AND Ipass="'.$_POST['JILKdni'].'"';
       //echo $consulta;
       $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos DE COMPROBACION DE ALUMNO");
       // echo "PROBANDO ",$consulta;  //COMPROBACIONES !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1111
@@ -48,7 +48,6 @@ if (strlen($_POST['JILKcorreo'])>0)
       // iniciar session 1 vez
       if ($Idni>0){  $_SESSION['Idni'] = $Idni;  }
       header('Location: ./ikasle/index.php');
-
   }
 }
 ?>

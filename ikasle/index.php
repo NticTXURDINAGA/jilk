@@ -11,6 +11,8 @@ header("Expires: Sat, 1 Jul 2000 05:00:00 GMT"); // Fecha en el pasado
 <html lang="es">
 <head>
 
+    <script src="../includes/jquery-3.2.1.slim.min.js"></script>
+
 <?php
 include '../includes/head.php';
 include '../includes/conex.php';
@@ -23,6 +25,17 @@ function activar(campo)
 }
 function guardar(idFormulario){
         document.forms[idFormulario].submit();
+}
+function ver_pass() {
+
+        var passwordField = document.getElementById('Ipass');
+        var value = passwordField.value;
+
+        	if(passwordField.type == 'password') {	passwordField.type = 'text'; $("#Ipassc").attr('class', 'glyphicon glyphicon-eye-close');	}
+        	else {passwordField.type = 'password'; $("#Ipassc").attr('class', 'glyphicon glyphicon-eye-open');	}
+
+        	passwordField.value = value;
+
 }
 
 </script>
@@ -99,6 +112,9 @@ if (strlen($_POST['Imail'])>0) {
     Idest="'.$_POST['Idest'].'",
     Iacts="'.$_POST['Iacts'].'",
     Iemp="'.$_POST['Iemp'].'",
+
+    Ipass="'.$_POST['Ipass'].'",
+
     Icurri="'.htmlspecialchars($_POST['Icurri']).'"
 
     WHERE Idni="'.$_SESSION['Idni'].'"';
@@ -127,6 +143,7 @@ while ($columna = mysqli_fetch_array( $resultado )) {
   $Iemp=$columna['Iemp'];
   $Itime=$columna['Itime'];
   $Itipo=$columna['Itipo'];
+  $Ipass=$columna['Ipass'];
 
   $Icurri=$columna['Icurri'];
 }
@@ -264,14 +281,25 @@ while ($columna = mysqli_fetch_array( $resultado )) {
     </div>
     <div id="collapseOne" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
-                      <div class="form-group">
-                          <label for="exampleInputEmail1">Teléfonos</label>
+                    <div class="input-group form-group">
+                      <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-phone-alt"></i>
+                      </span>
                           <input type="text" class="form-control" id="Itelefono" value="<?php     echo $Itelefono;     ?>" name="Itelefono">
                       </div>
 
-                      <div class="form-group">
-                          <label for="exampleInputEmail1">Correo Electronico</label>
+                      <div class="input-group form-group">
+                        <span class="input-group-addon">
+                          <i class="glyphicon glyphicon-user"></i>
+                        </span>
                           <input type="text" class="form-control" id="Imail" value="<?php     echo $Imail;     ?>" name="Imail">
+                      </div>
+
+                      <div class="input-group form-group">
+                        <span class="input-group-addon ">
+                          <a href="#" onclick="ver_pass();" ><i id=Ipassc class="  glyphicon glyphicon-eye-open"></i></a>
+                        </span>
+                        <input  class="form-control" placeholder="Contraseña" name="Ipass" id="Ipass" type="password" value="<?php     echo $Ipass;     ?>">
                       </div>
       </div>
     </div>
@@ -298,8 +326,7 @@ while ($columna = mysqli_fetch_array( $resultado )) {
                       <div class="collapse <?php if ($Iact=='TRAB'){ echo "in";} ?>" id="collapseTRAB">
                         <div class="well">
                                     <div class="form-group">
-                                      <label> Empresa</label>
-                                      <input type="text" class="form-control" id="Iemp" <?php if ($Iact!='TRAB') {echo 'disabled';};?> value="<?php     echo $Iemp;     ?>" name="Iemp">
+                                      <input placeholder="Empresa actual" type="text" class="form-control" id="Iemp" <?php if ($Iact!='TRAB') {echo 'disabled';};?> value="<?php     echo $Iemp;     ?>" name="Iemp">
                                     </div>
 
                                     <div class="checkbox">
