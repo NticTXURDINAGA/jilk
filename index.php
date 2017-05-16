@@ -3,6 +3,33 @@
 <?php
 include './includes/conex.php';
 
+include "./includes/newmail.php";
+
+if (strlen($_POST['JILKcorreor'])>0)
+{
+  $consulta = 'SELECT Idni from ikasle where Imail="'.$_POST['JILKcorreor'].'"';
+  //echo $consulta;
+  $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos DE COMPROBACION DE ALUMNO");
+  // echo "PROBANDO ",$consulta;  //COMPROBACIONES !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1111
+  while ($columna = mysqli_fetch_array( $resultado )) { $Idni=$columna['Idni'];}
+
+  if ($Idni>0){  nuevomail('asuento enviado',$_POST['JILKcorreor'],'<h1>cuerpo</h1><p>FUNCIONA y es tu DNI es '.$Idni.'</p>');  }
+else {
+  ?>
+  <br>
+  <div class="alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+          <p>HO EXISTES EN EL JILK...bla bla bla...</p>
+   </div>
+  <?php
+
+}
+
+
+}
+
+
 if (strlen($_POST['JILKcorreo'])>0)
 {
   if (($_POST['JILKcorreo']=='admin@fptxurdinaga.com') AND ($_POST['JILKdni']=='admin'))
@@ -13,7 +40,7 @@ if (strlen($_POST['JILKcorreo'])>0)
   else
   {
       $consulta = 'SELECT Idni from ikasle where Imail="'.$_POST['JILKcorreo'].'" AND Idni="'.$_POST['JILKdni'].'"';
-      echo $consulta;
+      //echo $consulta;
       $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos DE COMPROBACION DE ALUMNO");
       // echo "PROBANDO ",$consulta;  //COMPROBACIONES !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1111
       while ($columna = mysqli_fetch_array( $resultado )) { $Idni=$columna['Idni'];}
@@ -85,8 +112,45 @@ if (strlen($_POST['JILKcorreo'])>0)
       							</fieldset>
       						</form>
       					</div>
-      					<div class="panel-footer ">
-      						Recordar contraseña PENDIENTE <a href="#" onClick=""> o NO !! </a>
+
+      <div class="panel-footer ">
+
+                  <a href="#" data-toggle="modal" data-target="#myModalcs"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> ¿ Olvidaste la contraseña ?</a></li>
+
+
+
+                <!-- Modal -->
+                           <form role="form" action="#" method="POST">
+                                          <div class="modal fade" id="myModalcs" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <div class="modal-dialog" role="document">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                  <h4 class="modal-title" id="myModalLabel">Recordar Contraseña</h4>
+                                                </div>
+                                                <div class="modal-body">
+
+                                                    <div class="input-group">
+                                                      <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-user"></i>
+                                                      </span>
+                                                      <input class="form-control" placeholder="Correo electrónico" name="JILKcorreor" type="email" autofocus>
+                                                    </div>
+
+
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button  class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancelar </button>
+                                                  <button  type=submit class="btn btn-default" ><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Recordar </button>
+
+
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                          </form>
+
       					</div>
                       </div>
       			</div>

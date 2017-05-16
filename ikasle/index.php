@@ -1,6 +1,10 @@
 <?php session_start(); ?>
 <?php
 if (!isset($_SESSION['Idni'])) {header('Location: ../index.php');}
+
+//NO CACHE
+header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
+header("Expires: Sat, 1 Jul 2000 05:00:00 GMT"); // Fecha en el pasado
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +57,7 @@ if(isset($_FILES['upload']['name'])){
 
   require "../includes/imagen.php";
   $sourcefile= $_FILES['upload']['tmp_name'];
-  $endfile= "../tmp/".$_SESSION['Idni'];
+  $endfile= "../imagenes/".$_SESSION['Idni'];
   $type=$_FILES['upload']['type'];
 
   makeThumbnail($sourcefile, $max_width=150, $max_height=150, $endfile, $type);
@@ -61,6 +65,7 @@ if(isset($_FILES['upload']['name'])){
   //Insert into database the file name
   //$query="insert into table values('$endfile')";
 	// echo '<img src="'.$endfile.'" />';
+  //echo '<br><br><br><br><br><br><br><br><br><br>HAYYYYYYYYYYYYYYYYYYYY:'.$_POST['Imail'];
 }
 
 //poner fecha actual de acceso
@@ -144,12 +149,40 @@ while ($columna = mysqli_fetch_array( $resultado )) {
         <!--    <li ><button type="submit" class="btn btn-link"><span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span> Guardar</button></li> -->
               <li ><a href='#' onclick="guardar('general');"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Guardar</a></li>
 
-              <li ><a href="../logout.php"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Cerrar Sesion</a></li>
+              <li ><a href="#" data-toggle="modal" data-target="#myModalcs"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Cerrar Sesion</a></li>
+
+      <!--        <li ><a href="../logout.php" ><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Cerrar Sesion</a></li> -->
+      <!--        <li ><a href="#" onclick="guardar('general');window.location='../logout.php';"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Cerrar Sesion</a></li> -->
 
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+
+
+    <!-- Button trigger modal -->
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModalcs" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">CONFIRMACION CERRAR SESION</h4>
+                  </div>
+                  <div class="modal-body">
+                    GUARDA TUS CAMBIOS ANTES DE CERRAR SESION !!!!!
+                  </div>
+                  <div class="modal-footer">
+                    <button  class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancelar </button>
+                    <button  class="btn btn-default" onclick="guardar('general');"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Guardar</button>
+                    <button  class="btn btn-default" data-dismiss="modal" onclick="window.location='../logout.php';"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Cerrar Sesion </button>
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
 
  <img class="profilelogo-img" src="../imagenes/logoTX.png" alt="">
 
@@ -173,7 +206,17 @@ while ($columna = mysqli_fetch_array( $resultado )) {
 
           <div class="alert alert-info" role="alert">
             <h4><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $Inombrea; ?></h4>
-            <img id='imgfoto' class="img-rounded" src="../tmp/<?php echo $_SESSION['Idni']; ?>" />
+
+            <?php
+              if (file_exists('../imagenes/'.$_SESSION['Idni'])) {
+                 $verFoto=$_SESSION['Idni'];
+              } else {
+                  $verFoto='no_photo';
+              }
+             ?>
+
+            <img id='imgfoto' class="img-rounded" src="../imagenes/<?php echo $verFoto; ?>" />
+
             <p><a  data-toggle="collapse" href="#verfoto" aria-expanded="false" aria-controls="verfoto" class="btn"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Cambiar foto </a></p>
 
                   <div class="collapse" id="verfoto">
@@ -182,7 +225,7 @@ while ($columna = mysqli_fetch_array( $resultado )) {
 
                          <div class="form-group " >
                            <p><input  type="file" id="exampleInputFile" name="upload"></p>
-                           <a href='#' onclick="guardar('foto');" class="btn"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Cambiar foto</a>
+                           <a href='#' onclick="guardar('foto');" class="btn"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Confirmar Cambiar foto</a>
                        </div>
                       </form>
                       <div class="alert alert-warning alert-dismissible" role="alert">
