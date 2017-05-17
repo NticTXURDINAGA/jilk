@@ -1,10 +1,15 @@
 <?php session_start(); ?>
 <?php
+include '../includes/lenguajes.php';
+
 if (!isset($_SESSION['Idni'])) {header('Location: ../index.php');}
 
 //NO CACHE
 header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
 header("Expires: Sat, 1 Jul 2000 05:00:00 GMT"); // Fecha en el pasado
+
+//IDIOMA
+if (isset($_GET['leng'])) {$_SESSION['leng']=$_GET['leng'];}
 ?>
 
 <!DOCTYPE html>
@@ -40,12 +45,15 @@ function ver_pass() {
 
 </script>
 
+
+<!--              toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',-->
 <script src='../tinymce/js/tinymce/tinymce.min.js'></script>
 
            <script>
            tinymce.init({
              selector: '#Icurri',
              language: 'es',
+
              height: 500,
              menubar: false,
              plugins: [
@@ -53,7 +61,7 @@ function ver_pass() {
                'searchreplace visualblocks code fullscreen',
                'insertdatetime media table contextmenu paste code'
              ],
-             toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+             toolbar: 'undo redo |  styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent ',
              content_css: '//www.tinymce.com/css/codepen.min.css'
            });
 
@@ -167,7 +175,9 @@ while ($columna = mysqli_fetch_array( $resultado )) {
               <li ><a href='#' onclick="guardar('general');"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Guardar</a></li>
 
               <li ><a href="#" data-toggle="modal" data-target="#myModalcs"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Cerrar Sesion</a></li>
-
+              <li><a href="index.php?leng=1" >ES</a></li>
+              <li> | </li>
+              <li><a href="index.php?leng=2" >EU</a></li>
       <!--        <li ><a href="../logout.php" ><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Cerrar Sesion</a></li> -->
       <!--        <li ><a href="#" onclick="guardar('general');window.location='../logout.php';"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Cerrar Sesion</a></li> -->
 
@@ -234,7 +244,7 @@ while ($columna = mysqli_fetch_array( $resultado )) {
 
             <img id='imgfoto' class="img-rounded" src="../imagenes/<?php echo $verFoto; ?>" />
 
-            <p><a  data-toggle="collapse" href="#verfoto" aria-expanded="false" aria-controls="verfoto" class="btn"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Cambiar foto </a></p>
+            <p><a  data-toggle="collapse" href="#verfoto" aria-expanded="false" aria-controls="verfoto" class="btn"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> <?php echo $leng[9][$_SESSION['leng']]; ?> </a></p>
 
                   <div class="collapse" id="verfoto">
                     <div class="well">

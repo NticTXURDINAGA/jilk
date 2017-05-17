@@ -1,9 +1,14 @@
 <?php session_start(); ?>
 
 <?php
+include './includes/lenguajes.php';
+
 include './includes/conex.php';
 
 include "./includes/newmail.php";
+
+//IDIOMA
+if (isset($_GET['leng'])) {$_SESSION['leng']=$_GET['leng'];} else {$_SESSION['leng']=1;}
 
 if (strlen($_POST['JILKcorreor'])>0)
 {
@@ -20,7 +25,7 @@ else {
   <div class="alert alert-warning alert-dismissible" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
-          <p>HO EXISTES EN EL JILK...bla bla bla...</p>
+          <p><?php echo $leng[5][$_SESSION['leng']]; ?></p>
    </div>
   <?php
 
@@ -59,7 +64,7 @@ if (strlen($_POST['JILKcorreo'])>0)
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <title>JILK - CIFP TXURDINAGA LHII</title>
+     <title>JILK - CIFP TXURDINAGA LHII  </title>
      <!-- Bootstrap -->
      <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
      <link rel="stylesheet" type="text/css" href="./css/estilos.css" media="screen" />
@@ -73,7 +78,7 @@ if (strlen($_POST['JILKcorreo'])>0)
       			<div class="col-sm-6 col-md-4 col-md-offset-4">
       				<div class="panel panel-default">
       					<div class="panel-heading">
-      						<strong>JILK: CIFP TXURDINGA LHII</strong>
+      						<strong>JILK: CIFP TXURDINGA LHII <a href="index.php?leng=1" >ES</a> | <a href="index.php?leng=2" >EU</a></strong>
       					</div>
       					<div class="panel-body">
       						<form role="form" action="#" method="POST">
@@ -92,7 +97,7 @@ if (strlen($_POST['JILKcorreo'])>0)
       												<span class="input-group-addon">
       													<i class="glyphicon glyphicon-user"></i>
       												</span>
-      												<input class="form-control" placeholder="Correo electrónico" name="JILKcorreo" type="email" autofocus>
+      												<input class="form-control"   name="JILKcorreo" type="email" autofocus placeholder=<?php echo '"'.$leng[1][$_SESSION['leng']].'"'; ?>>
       											</div>
       										</div>
       										<div class="form-group">
@@ -100,11 +105,11 @@ if (strlen($_POST['JILKcorreo'])>0)
       												<span class="input-group-addon">
       													<i class="glyphicon glyphicon-lock"></i>
       												</span>
-      												<input class="form-control" placeholder="Contraseña" name="JILKdni" type="password" value="">
+      												<input class="form-control" placeholder=<?php echo '"'.$leng[2][$_SESSION['leng']].'"'; ?> name="JILKdni" type="password" value="">
       											</div>
       										</div>
       										<div class="form-group">
-      											<input type="submit" class="btn btn-lg btn-primary btn-block" value="Entrar">
+      											<input type="submit" class="btn btn-lg btn-primary btn-block" value=<?php echo '"'.$leng[3][$_SESSION['leng']].'"'; ?>>
       										</div>
       									</div>
       								</div>
@@ -114,7 +119,7 @@ if (strlen($_POST['JILKcorreo'])>0)
 
       <div class="panel-footer ">
 
-                  <a href="#" data-toggle="modal" data-target="#myModalcs"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> ¿ Olvidaste la contraseña ?</a></li>
+                  <a href="#" data-toggle="modal" data-target="#myModalcs"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> <?php echo $leng[4][$_SESSION['leng']]; ?></a></li>
 
 
 
@@ -125,7 +130,7 @@ if (strlen($_POST['JILKcorreo'])>0)
                                               <div class="modal-content">
                                                 <div class="modal-header">
                                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                  <h4 class="modal-title" id="myModalLabel">Recordar Contraseña</h4>
+                                                  <h4 class="modal-title" id="myModalLabel"><?php echo $leng[6][$_SESSION['leng']]; ?></h4>
                                                 </div>
                                                 <div class="modal-body">
 
@@ -133,15 +138,15 @@ if (strlen($_POST['JILKcorreo'])>0)
                                                       <span class="input-group-addon">
                                                         <i class="glyphicon glyphicon-user"></i>
                                                       </span>
-                                                      <input class="form-control" placeholder="Correo electrónico" name="JILKcorreor" type="email" autofocus>
+                                                      <input class="form-control" placeholder=<?php echo '"'.$leng[1][$_SESSION['leng']].'"'; ?> name="JILKcorreor" type="email" autofocus>
                                                     </div>
 
 
 
                                                 </div>
                                                 <div class="modal-footer">
-                                                  <button  class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancelar </button>
-                                                  <button  type=submit class="btn btn-default" ><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Recordar </button>
+                                                  <button  class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> <?php echo $leng[8][$_SESSION['leng']]; ?> </button>
+                                                  <button  type=submit class="btn btn-default" ><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> <?php echo $leng[7][$_SESSION['leng']]; ?> </button>
 
 
                                                 </div>
