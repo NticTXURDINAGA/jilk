@@ -78,7 +78,7 @@ if (strlen($_POST['JILKcorreo'])>0)
       			<div class="col-sm-6 col-md-4 col-md-offset-4">
       				<div class="panel panel-default">
       					<div class="panel-heading">
-      						<strong>JILK: CIFP TXURDINGA LHII <a href="index.php?leng=1" >ES</a> | <a href="index.php?leng=2" >EU</a></strong>
+      						<strong>JILK: CIFP TXURDINGA LHII     </strong><a href="index.php?leng=1" > ES</a> | <a href="index.php?leng=2" >EU </a>
       					</div>
       					<div class="panel-body">
       						<form role="form" action="#" method="POST">
@@ -88,6 +88,7 @@ if (strlen($_POST['JILKcorreo'])>0)
       								<!--		<img class="profile-img"
       											src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120" alt=""> -->
                             <img class="profile-img" src="./imagenes/logoTX.png" alt="">
+                        <!--    <div class="centrados"><a href="index.php?leng=1" > ES</a> | <a href="index.php?leng=2" >EU </a></div> -->
       									</div>
       								</div>
       								<div class="row">

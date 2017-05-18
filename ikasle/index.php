@@ -5,8 +5,6 @@ include '../includes/lenguajes.php';
 if (!isset($_SESSION['Idni'])) {header('Location: ../index.php');}
 
 //NO CACHE
-header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
-header("Expires: Sat, 1 Jul 2000 05:00:00 GMT"); // Fecha en el pasado
 
 //IDIOMA
 if (isset($_GET['leng'])) {$_SESSION['leng']=$_GET['leng'];}
@@ -15,6 +13,9 @@ if (isset($_GET['leng'])) {$_SESSION['leng']=$_GET['leng'];}
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- EVITAR CACHE PARA LA FOTO -->
+  <meta http-equiv="expires" content="Sun, 01 Jan 2014 00:00:00 GMT"/>
+  <meta http-equiv="pragma" content="no-cache" />
 
     <script src="../includes/jquery-3.2.1.slim.min.js"></script>
 
@@ -172,12 +173,10 @@ while ($columna = mysqli_fetch_array( $resultado )) {
           <ul class="nav navbar-nav">
 
         <!--    <li ><button type="submit" class="btn btn-link"><span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span> Guardar</button></li> -->
-              <li ><a href='#' onclick="guardar('general');"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Guardar</a></li>
+              <li ><a href='#' onclick="guardar('general');"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> <?php echo $leng[10][$_SESSION['leng']]; ?></a></li>
 
-              <li ><a href="#" data-toggle="modal" data-target="#myModalcs"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Cerrar Sesion</a></li>
-              <li><a href="index.php?leng=1" >ES</a></li>
-              <li> | </li>
-              <li><a href="index.php?leng=2" >EU</a></li>
+              <li ><a href="#" data-toggle="modal" data-target="#myModalcs"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> <?php echo $leng[11][$_SESSION['leng']]; ?></a></li>
+
       <!--        <li ><a href="../logout.php" ><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Cerrar Sesion</a></li> -->
       <!--        <li ><a href="#" onclick="guardar('general');window.location='../logout.php';"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Cerrar Sesion</a></li> -->
 
@@ -195,15 +194,16 @@ while ($columna = mysqli_fetch_array( $resultado )) {
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">CONFIRMACION CERRAR SESION</h4>
+                    <h4 class="modal-title" id="myModalLabel"><?php echo $leng[12][$_SESSION['leng']]; ?></h4>
                   </div>
                   <div class="modal-body">
-                    GUARDA TUS CAMBIOS ANTES DE CERRAR SESION !!!!!
+                    <?php echo $leng[13][$_SESSION['leng']]; ?>
+
                   </div>
                   <div class="modal-footer">
-                    <button  class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancelar </button>
-                    <button  class="btn btn-default" onclick="guardar('general');"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Guardar</button>
-                    <button  class="btn btn-default" data-dismiss="modal" onclick="window.location='../logout.php';"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Cerrar Sesion </button>
+                    <button  class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> <?php echo $leng[8][$_SESSION['leng']]; ?> </button>
+                    <button  class="btn btn-default" onclick="guardar('general');"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> <?php echo $leng[10][$_SESSION['leng']]; ?></button>
+                    <button  class="btn btn-default" data-dismiss="modal" onclick="window.location='../logout.php';"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> <?php echo $leng[11][$_SESSION['leng']]; ?></button>
 
 
                   </div>
@@ -211,7 +211,7 @@ while ($columna = mysqli_fetch_array( $resultado )) {
               </div>
             </div>
 
- <img class="profilelogo-img" src="../imagenes/logoTX.png" alt="">
+ <img class="profilelogo-img" src="../imagenes/logoTX.png" alt=""><a href="index.php?leng=1" > ES</a> | <a href="index.php?leng=2" >EU </a>
 
 
 
@@ -252,12 +252,12 @@ while ($columna = mysqli_fetch_array( $resultado )) {
 
                          <div class="form-group " >
                            <p><input  type="file" id="exampleInputFile" name="upload"></p>
-                           <a href='#' onclick="guardar('foto');" class="btn"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Confirmar Cambiar foto</a>
+                           <a href='#' onclick="guardar('foto');" class="btn"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> <?php echo $leng[14][$_SESSION['leng']]; ?></a>
                        </div>
                       </form>
                       <div class="alert alert-warning alert-dismissible" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                              <p>Puede tardar unos segundos en mostrarse la nueva foto .....bla bla bla...</p>
+                              <p><?php echo $leng[15][$_SESSION['leng']]; ?></p>
                        </div>
                     </div>
                   </div>
@@ -285,7 +285,7 @@ while ($columna = mysqli_fetch_array( $resultado )) {
     <div  class="panel-heading" role="tab" id="headingOne">
       <h4  class="panel-title">
         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          <span class="glyphicon glyphicon-random" aria-hidden="true"></span>  CONTACTO
+          <span class="glyphicon glyphicon-random" aria-hidden="true"></span>   <?php echo $leng[15][$_SESSION['leng']]; ?>
         </a>
       </h4>
     </div>
@@ -318,7 +318,7 @@ while ($columna = mysqli_fetch_array( $resultado )) {
     <div class="panel-heading" role="tab" id="headingTwo">
       <h4 class="panel-title">
         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>  SITUACION LABORAL
+          <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>   <?php echo $leng[16][$_SESSION['leng']]; ?>
         </a>
       </h4>
     </div>
@@ -328,20 +328,21 @@ while ($columna = mysqli_fetch_array( $resultado )) {
                       <label>
                       <input type="checkbox" name='Iact'  value='TRAB'
                           onclick="$('#collapseTRAB').collapse('toggle');activar('Iemp');activar('Iacts');"
-                          <?php   if ($Iact=='TRAB') {echo "Checked";};     ?>
-                          > En Activo.
+                          <?php   if ($Iact=='TRAB') {echo "Checked";};     ?>>
+                           <?php echo $leng[18][$_SESSION['leng']]; ?>
                       </label>
 
 
                       <div class="collapse <?php if ($Iact=='TRAB'){ echo "in";} ?>" id="collapseTRAB">
                         <div class="well">
-                                    <div class="form-group">
-                                      <input placeholder="Empresa actual" type="text" class="form-control" id="Iemp" <?php if ($Iact!='TRAB') {echo 'disabled';};?> value="<?php     echo $Iemp;     ?>" name="Iemp">
+                                    <div class="input-group">
+                                      <span class="input-group-addon"><?php echo $leng[19][$_SESSION['leng']]; ?></span>
+                                      <input  type="text" class="form-control" id="Iemp" <?php if ($Iact!='TRAB') {echo 'disabled';};?> value="<?php     echo $Iemp;     ?>" name="Iemp" >
                                     </div>
 
                                     <div class="checkbox">
                                       <label>
-                                        <input type="checkbox" name='Iacts' id='Iacts' <?php if ($Iact!='TRAB') {echo 'disabled';};?>  value='SI' <?php   if ($Iacts=='SI') {echo "Checked";};     ?> > Empresa del Sector.
+                                        <input type="checkbox" name='Iacts' id='Iacts' <?php if ($Iact!='TRAB') {echo 'disabled';};?>  value='SI' <?php   if ($Iacts=='SI') {echo "Checked";};     ?> > <?php echo $leng[21][$_SESSION['leng']]; ?>
 
 
                                       </label>
@@ -356,7 +357,7 @@ while ($columna = mysqli_fetch_array( $resultado )) {
 
                     <div class="checkbox">
                       <label>
-                      <input type="checkbox" name='Idact' id='Idact' value='DTRAB' <?php   if ($Idact=='DTRAB') {echo "Checked";};     ?> > Demandas Trabajo.
+                      <input type="checkbox" name='Idact' id='Idact' value='DTRAB' <?php   if ($Idact=='DTRAB') {echo "Checked";};     ?> > <?php echo $leng[22][$_SESSION['leng']]; ?>
                       </label>
                     </div>
       </div>
@@ -366,7 +367,7 @@ while ($columna = mysqli_fetch_array( $resultado )) {
     <div class="panel-heading" role="tab" id="headingThree">
       <h4 class="panel-title">
         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>  SITUACION ACADEMICA
+          <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>   <?php echo $leng[17][$_SESSION['leng']]; ?>
         </a>
       </h4>
     </div>
@@ -374,12 +375,12 @@ while ($columna = mysqli_fetch_array( $resultado )) {
       <div class="panel-body">
                       <div class="checkbox">
                         <label>
-                          <input type="checkbox" name='Iest'  value='ESTU' <?php   if ($Iest=='ESTU') {echo "Checked";};     ?> > Estudias.
+                          <input type="checkbox" name='Iest'  value='ESTU' <?php   if ($Iest=='ESTU') {echo "Checked";};     ?> > <?php echo $leng[23][$_SESSION['leng']]; ?>
                         </label>
                       </div>
                       <div class="checkbox">
                         <label>
-                          <input type="checkbox" name='Idest'  value='DESTU' <?php   if ($Idest=='DESTU') {echo "Checked";};     ?> > DemandaS Formación.
+                          <input type="checkbox" name='Idest'  value='DESTU' <?php   if ($Idest=='DESTU') {echo "Checked";};     ?> > <?php echo $leng[24][$_SESSION['leng']]; ?>
                         </label>
                       </div>
       </div>
@@ -400,8 +401,8 @@ while ($columna = mysqli_fetch_array( $resultado )) {
               <div class="alert alert-warning alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
-                <strong>Última conexion:</strong> <?php     echo date('d-m-Y',strtotime($Itime));     ?>
-                <p>Texto explicativo sobre la insercion del Curriculum y sobre temas de formato y demas .....bla bla bla...</p>
+                <strong><?php echo $leng[25][$_SESSION['leng']]; ?></strong> <?php     echo date('d-m-Y',strtotime($Itime));     ?>
+                <p><?php echo $leng[26][$_SESSION['leng']]; ?></p>
                </div>
 
                   <textarea id="Icurri" name="Icurri">

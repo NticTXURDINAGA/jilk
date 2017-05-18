@@ -41,4 +41,80 @@ $leng[9][1]="Cambiar foto";
 $leng[9][2]="Argazkia aldatu";
 $leng[9][3]="";
 
+$leng[10][1]="Guardar";
+$leng[10][2]="Gorde";
+$leng[10][3]="";
+
+$leng[11][1]="Cerrar Sesion";
+$leng[11][2]="Saioa itxi";
+$leng[11][3]="";
+
+$leng[12][1]="CONFIRMACION CERRAR SESION";
+$leng[12][2]="SAIOA ITXI BERRESPENA";
+$leng[12][3]="";
+
+$leng[13][1]="GUARDA TUS CAMBIOS ANTES DE CERRAR SESION !!!!!";
+$leng[13][2]="ZURE ALDAKETAK SAIOA ITXI BAINO LEHEN GORDE !!!!!";
+$leng[13][3]="";
+
+$leng[14][1]="Confirmar cambiar foto";
+$leng[14][2]="Argazkia aldatu berrespena";
+$leng[14][3]="";
+
+$leng[15][1]="CONTACTO Y ACCESO";
+$leng[15][2]="KONTAKTUA ETA SARBIDEA";
+$leng[15][3]="";
+
+$leng[16][1]="SITUACION LABORAL";
+$leng[16][2]="EGOERA LABORALA";
+$leng[16][3]="";
+
+$leng[17][1]="SITUACION ACADEMICA";
+$leng[17][2]="EGOERA HEZIGARRIA";
+$leng[17][3]="";
+
+$leng[18][1]="En Activo.";
+$leng[18][2]="Lanean.";
+$leng[18][3]="";
+
+$leng[19][1]="Empresa actual";
+$leng[19][2]="Gaurko enpresa";
+$leng[19][3]="";
+
+$leng[21][1]="Empresa del Sector.";
+$leng[21][2]="Sektoreko Enpresa.";
+$leng[21][3]="";
+
+$leng[22][1]="Demandas ofertas laborales.";
+$leng[22][2]="Eskaintza laboralak eskatu ezazu.";
+$leng[22][3]="";
+
+$leng[23][1]="Estudias.";
+$leng[23][2]="Ikasten";
+$leng[23][3]="";
+
+$leng[24][1]="Demandas Formación.";
+$leng[24][2]="Heziketa eskatu ezazu.";
+$leng[24][3]="";
+
+$leng[25][1]="Última conexion:";
+$leng[25][2]="Azken conexioa";
+$leng[25][3]="";
+
+$leng[26][1]="Texto explicativo sobre la insercion del Curriculum y sobre temas de formato y demas .....bla bla bla...";
+$leng[26][2]="Curriculum-eko insercion-aren gainean eta formatu-gaien gaineko testu esplikatiboa eta demas-a .....bla bla bla...";
+$leng[26][3]="";
+
+$leng[27][1]="";
+$leng[27][2]="";
+$leng[27][3]="";
+
+$leng[28][1]="";
+$leng[28][2]="";
+$leng[28][3]="";
+
+$leng[29][1]="";
+$leng[29][2]="";
+$leng[29][3]="";
+
  ?>
