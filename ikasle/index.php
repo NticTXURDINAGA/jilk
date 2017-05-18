@@ -82,6 +82,8 @@ if(isset($_FILES['upload']['name'])){
   $endfile= "../imagenes/".$_SESSION['Idni'];
   $type=$_FILES['upload']['type'];
 
+  unlink("../imagenes/".$_SESSION['Idni']);
+
   makeThumbnail($sourcefile, $max_width=150, $max_height=150, $endfile, $type);
 
   //Insert into database the file name
@@ -167,7 +169,7 @@ while ($columna = mysqli_fetch_array( $resultado )) {
   <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> JILK Txurdinaga</a>
+          <a class="navbar-brand" href=""><span class="glyphicon glyphicon-home" aria-hidden="true"></span> JILK Txurdinaga</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -242,7 +244,7 @@ while ($columna = mysqli_fetch_array( $resultado )) {
               }
              ?>
 
-            <img id='imgfoto' class="img-rounded" src="../imagenes/<?php echo $verFoto; ?>" />
+            <img id='imgfoto' class="img-thumbnail" src="../imagenes/<?php echo $verFoto; ?>" />
 
             <p><a  data-toggle="collapse" href="#verfoto" aria-expanded="false" aria-controls="verfoto" class="btn"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> <?php echo $leng[9][$_SESSION['leng']]; ?> </a></p>
 
@@ -278,7 +280,7 @@ while ($columna = mysqli_fetch_array( $resultado )) {
           </div>
 
 
-      <form action="#" method="post" id='general' >
+      <form action="" method="post" id='general' >
 
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   <div class="panel panel-info" >
