@@ -81,6 +81,10 @@ $leng[19][1]="Empresa actual";
 $leng[19][2]="Gaurko enpresa";
 $leng[19][3]="";
 
+$leng[20][1]="Puede que el cambio de imagen tarde unos minutos.";
+$leng[20][2]="Agian berandu argazki aldaketa minutu batzuetan..";
+$leng[20][3]="";
+
 $leng[21][1]="Empresa del Sector.";
 $leng[21][2]="Sektoreko Enpresa.";
 $leng[21][3]="";

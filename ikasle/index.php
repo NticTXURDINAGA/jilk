@@ -11,7 +11,7 @@ if (isset($_GET['leng'])) {$_SESSION['leng']=$_GET['leng'];}
 ?>
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es"  >
 <head>
   <!-- EVITAR CACHE PARA LA FOTO -->
   <meta http-equiv="expires" content="Sun, 01 Jan 2014 00:00:00 GMT"/>
@@ -79,10 +79,10 @@ if(isset($_FILES['upload']['name'])){
 
   require "../includes/imagen.php";
   $sourcefile= $_FILES['upload']['tmp_name'];
-  $endfile= "../imagenes/".$_SESSION['Idni'];
+  $endfile= "../imagenes/".$_SESSION['Idni'].".jpg";
   $type=$_FILES['upload']['type'];
 
-  unlink("../imagenes/".$_SESSION['Idni']);
+  //unlink("../imagenes/".$_SESSION['Idni']);
 
   makeThumbnail($sourcefile, $max_width=150, $max_height=150, $endfile, $type);
 
@@ -237,8 +237,8 @@ while ($columna = mysqli_fetch_array( $resultado )) {
             <h4><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $Inombrea; ?></h4>
 
             <?php
-              if (file_exists('../imagenes/'.$_SESSION['Idni'])) {
-                 $verFoto=$_SESSION['Idni'];
+              if (file_exists('../imagenes/'.$_SESSION['Idni'].'.jpg')) {
+                 $verFoto=$_SESSION['Idni'].'.jpg';
               } else {
                   $verFoto='no_photo';
               }
@@ -253,13 +253,13 @@ while ($columna = mysqli_fetch_array( $resultado )) {
                       <form  class="form-inline" action="#" enctype="multipart/form-data" method="post" id='foto'>
 
                          <div class="form-group " >
-                           <p><input  type="file" id="exampleInputFile" name="upload"></p>
+                           <p><input  type="file" id="exampleInputFile" name="upload" ></p>
                            <a href='#' onclick="guardar('foto');" class="btn"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> <?php echo $leng[14][$_SESSION['leng']]; ?></a>
                        </div>
                       </form>
                       <div class="alert alert-warning alert-dismissible" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                              <p><?php echo $leng[15][$_SESSION['leng']]; ?></p>
+                              <p><?php echo $leng[20][$_SESSION['leng']]; ?></p>
                        </div>
                     </div>
                   </div>
