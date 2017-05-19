@@ -6,6 +6,7 @@ if (!isset($_SESSION['Idni'])) {header('Location: ../index.php');}
 
 //NO CACHE
 
+
 //IDIOMA
 if (isset($_GET['leng'])) {$_SESSION['leng']=$_GET['leng'];}
 ?>
@@ -14,8 +15,10 @@ if (isset($_GET['leng'])) {$_SESSION['leng']=$_GET['leng'];}
 <html lang="es"  >
 <head>
   <!-- EVITAR CACHE PARA LA FOTO -->
-  <meta http-equiv="expires" content="Sun, 01 Jan 2014 00:00:00 GMT"/>
-  <meta http-equiv="pragma" content="no-cache" />
+  <meta http-equiv="Expires" CONTENT="0">
+  <meta http-equiv="Cache-Control" CONTENT="no-cache">
+  <meta http-equiv="Pragma" CONTENT="no-cache">
+
 
     <script src="../includes/jquery-3.2.1.slim.min.js"></script>
 
@@ -166,26 +169,33 @@ while ($columna = mysqli_fetch_array( $resultado )) {
       <h3>no muestra</h3>
 
 
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href=""><span class="glyphicon glyphicon-home" aria-hidden="true"></span> JILK Txurdinaga</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><a class="navbar-brand" href=""><span class="glyphicon glyphicon-home" aria-hidden="true"></span> JILK Txurdinaga</a>
+          </div>
 
-        <!--    <li ><button type="submit" class="btn btn-link"><span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span> Guardar</button></li> -->
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
               <li ><a href='#' onclick="guardar('general');"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> <?php echo $leng[10][$_SESSION['leng']]; ?></a></li>
 
               <li ><a href="#" data-toggle="modal" data-target="#myModalcs"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> <?php echo $leng[11][$_SESSION['leng']]; ?></a></li>
 
-      <!--        <li ><a href="../logout.php" ><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Cerrar Sesion</a></li> -->
-      <!--        <li ><a href="#" onclick="guardar('general');window.location='../logout.php';"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Cerrar Sesion</a></li> -->
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
 
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+
+
 
 
     <!-- Button trigger modal -->
