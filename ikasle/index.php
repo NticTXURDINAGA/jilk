@@ -1,11 +1,13 @@
 <?php session_start(); ?>
 <?php
+
+header('Cache-Control: no-cache, no-store, must-revalidate');
+header('Pragma: no-cache');
+header('Expires: 0');
+
 include '../includes/lenguajes.php';
 
 if (!isset($_SESSION['Idni'])) {header('Location: ../index.php');}
-
-//NO CACHE
-
 
 //IDIOMA
 if (isset($_GET['leng'])) {$_SESSION['leng']=$_GET['leng'];}
@@ -14,13 +16,12 @@ if (isset($_GET['leng'])) {$_SESSION['leng']=$_GET['leng'];}
 <!DOCTYPE html>
 <html lang="es"  >
 <head>
-  <!-- EVITAR CACHE PARA LA FOTO -->
+  <!-- EVITAR CACHE PARA LA FOTO
   <meta http-equiv="Expires" CONTENT="0">
   <meta http-equiv="Cache-Control" CONTENT="no-cache">
-  <meta http-equiv="Pragma" CONTENT="no-cache">
+  <meta http-equiv="Pragma" CONTENT="no-cache"> -->
 
-
-    <script src="../includes/jquery-3.2.1.slim.min.js"></script>
+<script src="../js/jquery-3.2.1.slim.min.js"></script>
 
 <?php
 include '../includes/head.php';
@@ -168,6 +169,45 @@ while ($columna = mysqli_fetch_array( $resultado )) {
   <div class="container theme-showcase" role="main">
       <h3>no muestra</h3>
 
+      <div id="myCarousel" class="carousel slide">
+        <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+            <div class="item active">
+              <div class="fill" style="background-image:url('http://placehold.it/1900x1080&amp;text=Slide One');"></div>
+              <div class="carousel-caption">
+                <h1>Modern Business - A Bootstrap 3 Template</h1>
+              </div>
+            </div>
+            <div class="item">
+              <div class="fill" style="background-image:url('http://placehold.it/1900x1080&amp;text=Slide Two');"></div>
+              <div class="carousel-caption">
+                <h1>Ready to Style &amp; Add Content</h1>
+              </div>
+            </div>
+            <div class="item">
+              <div class="fill" style="background-image:url('http://placehold.it/1900x1080&amp;text=Slide Three');"></div>
+              <div class="carousel-caption">
+                <h1>Additional Layout Options at <a href="http://startbootstrap.com">http://startbootstrap.com</a></h1>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+          </a>
+          <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+          </a>
+      </div>
+
 
       <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
@@ -179,15 +219,15 @@ while ($columna = mysqli_fetch_array( $resultado )) {
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><a class="navbar-brand" href=""><span class="glyphicon glyphicon-home" aria-hidden="true"></span> JILK Txurdinaga</a>
+            <a class="navbar-brand" href=""><span class="glyphicon glyphicon-home" aria-hidden="true"></span> JILK Txurdinaga</a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li ><a href='#' onclick="guardar('general');"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> <?php echo $leng[10][$_SESSION['leng']]; ?></a></li>
+              <li ><a href='#' onclick="guardar('general');"><span class="glyphicon glyphicon-floppy-disk" ></span> <?php echo $leng[10][$_SESSION['leng']]; ?></a></li>
 
-              <li ><a href="#" data-toggle="modal" data-target="#myModalcs"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> <?php echo $leng[11][$_SESSION['leng']]; ?></a></li>
+              <li ><a href="#" data-toggle="modal" data-target="#myModalcs"><span class="glyphicon glyphicon-new-window" ></span> <?php echo $leng[11][$_SESSION['leng']]; ?></a></li>
 
             </ul>
           </div><!-- /.navbar-collapse -->
@@ -278,12 +318,25 @@ while ($columna = mysqli_fetch_array( $resultado )) {
 
             <br>
             <?php
-              echo '<table class="table">';
+              echo '<table class="table">';  ?>
+              <thead>
+                 <tr class="info text-center">
+                   <small>
+                  <th class="text-center"></th>
+                  <th class="text-center"></th>
+                  <th class="text-center"></th>
+                  <th class="text-center"><?php echo $leng[27][$_SESSION['leng']]; ?></th>
+                  <th class="text-center"><?php echo $leng[28][$_SESSION['leng']]; ?></th>
+                </small>
+                 </tr>
+               </thead>
+               <?php
                 $consulta = 'SELECT * from ik,kurso where kurso.Kcod=ik.Kcod AND Idni="'.$_SESSION['Idni'].'"';
                 $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos DE SESSION no PILLADA");
                 while ($columna = mysqli_fetch_array( $resultado ))
                  {
-                  echo '<tr><td>'.$columna['Kcod'].'</td><td>'.$columna['Kurso'].'</td><td>'.$columna['IKdual'].'</td><td>'.$columna['IKempfct'].'</td><td>'.$columna['IKcont'].'</td></tr>';
+                  echo '<tr><td>'.$columna['Kcod'].'</td><td>'.$columna['Kurso'].'</td><td>'.$columna['IKdual'].'</td>
+                  <td class="text-center">'.$columna['IKempfct'].'</td><td class="text-center">'.$columna['IKcont'].'</td></tr>';
                  }
               echo '</table>';
             ?>
@@ -354,7 +407,7 @@ while ($columna = mysqli_fetch_array( $resultado )) {
 
                                     <div class="checkbox">
                                       <label>
-                                        <input type="checkbox" name='Iacts' id='Iacts' <?php if ($Iact!='TRAB') {echo 'disabled';};?>  value='SI' <?php   if ($Iacts=='SI') {echo "Checked";};     ?> > <?php echo $leng[21][$_SESSION['leng']]; ?>
+                                        <input type="checkbox" name='Iacts' id='Iacts' <?php if ($Iact!='TRAB') {echo 'disabled';};?>  value='X' <?php   if ($Iacts=='X') {echo "Checked";};     ?> > <?php echo $leng[21][$_SESSION['leng']]; ?>
 
 
                                       </label>

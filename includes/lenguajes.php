@@ -81,8 +81,8 @@ $leng[19][1]="Empresa actual";
 $leng[19][2]="Gaurko enpresa";
 $leng[19][3]="";
 
-$leng[20][1]="Puede que el cambio de imagen tarde unos minutos.";
-$leng[20][2]="Agian berandu argazki aldaketa minutu batzuetan..";
+$leng[20][1]="Puede que el cambio de imagen tarde unos minutos, dependiendo de tu navegador.";
+$leng[20][2]="Agian berandu argazki aldaketa minutu batzuetan, zure nabigatzailearen arabera.";
 $leng[20][3]="";
 
 $leng[21][1]="Empresa del Sector.";
@@ -102,19 +102,19 @@ $leng[24][2]="Heziketa eskatu ezazu.";
 $leng[24][3]="";
 
 $leng[25][1]="Última conexion:";
-$leng[25][2]="Azken conexioa";
+$leng[25][2]="Azken conexioa:";
 $leng[25][3]="";
 
 $leng[26][1]="Texto explicativo sobre la insercion del Curriculum y sobre temas de formato y demas .....bla bla bla...";
 $leng[26][2]="Curriculum-eko insercion-aren gainean eta formatu-gaien gaineko testu esplikatiboa eta demas-a .....bla bla bla...";
 $leng[26][3]="";
 
-$leng[27][1]="";
-$leng[27][2]="";
+$leng[27][1]="Empresa";
+$leng[27][2]="Enpresa";
 $leng[27][3]="";
 
-$leng[28][1]="";
-$leng[28][2]="";
+$leng[28][1]="Continuidad";
+$leng[28][2]="Jarraimena";
 $leng[28][3]="";
 
 $leng[29][1]="";

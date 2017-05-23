@@ -1,8 +1,8 @@
 <?php
 function nuevomail($asunto,$destinatarios,$html)
 {
-include "./phpmailer/class.phpmailer.php";
-include "./phpmailer/class.smtp.php";
+include "../phpmailer/class.phpmailer.php";
+include "../phpmailer/class.smtp.php";
 
 $from_name = "CIFP TXURDINAGA LHII (JILK)";
 

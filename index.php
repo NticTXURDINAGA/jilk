@@ -18,7 +18,16 @@ if (strlen($_POST['JILKcorreor'])>0)
   // echo "PROBANDO ",$consulta;  //COMPROBACIONES !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1111
   while ($columna = mysqli_fetch_array( $resultado )) { $Idni=$columna['Idni'];$Ipass=$columna['Ipass'];}
 
-  if ($Idni>0){  nuevomail('asuento enviado',$_POST['JILKcorreor'],'<h1>cuerpo</h1><p>FUNCIONA y es tu CLAVE es '.$Ipass.'</p>');  }
+  if ($Idni>0){
+
+    $destinos[]=$_POST['JILKcorreor'];
+    //$destinos[]='ntic@fptxurdinaga.com';
+    $Asunto='RECORDATORIO CONTRASEÑA JILK';
+    $Cuerpo='<h1>Hola Usuario del JILK.</h1><p>Tu CLAVE es '.$Ipass.'</p><p>Un saludo.</p>';
+    nuevomail($Asunto,$destinos,$Cuerpo);
+
+
+   }
 else {
   ?>
   <br>
@@ -74,7 +83,9 @@ if (strlen($_POST['JILKcorreo'])>0)
   <body>
       <!-- conexion BD -->
       <div class="container" style="margin-top:40px">
-      		<div class="row">
+
+
+    		<div class="row">
       			<div class="col-sm-6 col-md-4 col-md-offset-4">
       				<div class="panel panel-default">
       					<div class="panel-heading">
@@ -161,6 +172,10 @@ if (strlen($_POST['JILKcorreo'])>0)
       			</div>
       		</div>
       	</div>
+
+
+
+
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
