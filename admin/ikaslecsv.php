@@ -133,10 +133,27 @@ if (!mysqli_query($conexion,$cik)) { $CerrorC=$CerrorC.' ERROR RELACION: '.$dato
     //count($destinos)
     //$destinos[]=$_POST['JILKcorreor'];
     //$destinos[]='ntic@fptxurdinaga.com';
-    $Asunto='DADO DE ALTA JILK';
-    $Cuerpo='<h1>Hola NUEVO Usuario del JILK.</h1>
-              <p>Tu CLAVE es tu DNI</p>
-              <p>Un saludo.</p>';
+    $Asunto='ALTA servicio JILK (CIFP TXURDINAGA LHII)';
+    $Cuerpo='<h3>Hola alumno del CIFP TXURDINAGA LHII</h3>
+              <h4>Nos ponemos en contacto contigo desde el CIFP TXURDINAGA LHII para informarte que hemos puesto en marcha la aplicación <b>JILK</b>, con los siguientes objetivos:</h4>
+              <br>
+              <p>1.- Ofrecerte el servicio de una bolsa de trabajo.</p>
+              <p>2.- Ofrecerte información sobre los cursos de Formación para el Empleo que se imparten en el centro.</p>
+              <p>3.- Obtención de estadísticas de seguimiento que nos ayuden a mejorar nuestros servicios.</p>
+              <br>
+              <p>Para poder llevar a cabo estos objetivos y ofrecerte los servicios señalados,
+                    necesitamos que accedas a la aplicacion,compruebes tus datos y los mantengas actualizados, dentro de lo posible.</p>
+              <p>No te procupes del formato en el que insertas tu CURRICULUM, el sistema tiene la capacidad de buscar independientemente del formato.</p>
+              <br>
+              <h2>Datos de Acceso</h2>
+              <h3><a href=http://jilk.fptxurdinaga.net target=_blank > JILK.fpTXurdinaga.net </a></h3>
+              <p><b>Usuario:</b> tu correo electronico, posteriormente puedes cambiarlo.</p>
+              <p><b>Contraseña:</b> el DNI con letra, posteriormente puedes cambiarla.</p>
+              <br>
+              <br>
+              <h3>Muchas gracias por tu colaboración y un saludo.</h3>
+              ';
+
     nuevomail($Asunto,$destinos,$Cuerpo);
   }
 ?>

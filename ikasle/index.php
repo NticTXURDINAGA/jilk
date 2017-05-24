@@ -1,9 +1,10 @@
 <?php session_start(); ?>
 <?php
+header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
 
-header('Cache-Control: no-cache, no-store, must-revalidate');
-header('Pragma: no-cache');
-header('Expires: 0');
+header("Expires: Sat, 1 Jul 2000 05:00:00 GMT"); // Fecha en el pasado
+
+
 
 include '../includes/lenguajes.php';
 
@@ -294,7 +295,7 @@ while ($columna = mysqli_fetch_array( $resultado )) {
               }
              ?>
 
-            <img id='imgfoto' class="img-thumbnail" src="../imagenes/<?php echo $verFoto; ?>" />
+            <img id='imgfoto' class="img-thumbnail" src="../imagenes/<?php echo $verFoto; ?>?ver=1.0" />
 
             <p><a  data-toggle="collapse" href="#verfoto" aria-expanded="false" aria-controls="verfoto" class="btn"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> <?php echo $leng[9][$_SESSION['leng']]; ?> </a></p>
 

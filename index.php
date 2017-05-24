@@ -22,8 +22,19 @@ if (strlen($_POST['JILKcorreor'])>0)
 
     $destinos[]=$_POST['JILKcorreor'];
     //$destinos[]='ntic@fptxurdinaga.com';
-    $Asunto='RECORDATORIO CONTRASEÑA JILK';
-    $Cuerpo='<h1>Hola Usuario del JILK.</h1><p>Tu CLAVE es '.$Ipass.'</p><p>Un saludo.</p>';
+    $Asunto='RECORDATORIO CONTRASEÑA. JILK (CIFP TXURDINAGA LHII)';
+//    $Cuerpo='<h1>Hola Usuario del JILK.</h1><p>Tu CLAVE es '.$Ipass.'</p><p>Un saludo.</p>';
+    $Cuerpo='<h3>Hola alumno del CIFP TXURDINAGA LHII</h3>
+              <h4>Nos ponemos en contacto contigo desde el CIFP TXURDINAGA LHII para informarte de tu clave de acceso al <b>JILK</b></h4>
+
+              <h2>Datos de Acceso</h2>
+              <h3><a href=http://jilk.fptxurdinaga.net target=_blank > JILK.fpTXurdinaga.net </a></h3>
+              <p><b>Usuario:</b> tu correo electronico, posteriormente puedes cambiarlo.</p>
+              <p><b>Contraseña: </b>'.$Ipass.'</p>
+              <br>
+              <br>
+              <h3>Muchas gracias por tu colaboración y un saludo.</h3>
+              ';
     nuevomail($Asunto,$destinos,$Cuerpo);
 
 
@@ -53,7 +64,7 @@ if (strlen($_POST['JILKcorreo'])>0)
   }
   else
   {
-      $consulta = 'SELECT Idni from ikasle where Imail="'.$_POST['JILKcorreo'].'" AND Ipass="'.$_POST['JILKdni'].'"';
+      $consulta = 'SELECT Idni from ikasle where Imail="'.$_POST['JILKcorreo'].'" AND Ipass="'.strtoupper($_POST['JILKdni']).'"';
       //echo $consulta;
       $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos DE COMPROBACION DE ALUMNO");
       // echo "PROBANDO ",$consulta;  //COMPROBACIONES !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1111
