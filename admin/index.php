@@ -219,14 +219,14 @@ $ScIKcont=0;
                           <th class="text-center">NOMBRE</th>
                           <th class="text-center">E-mail</th>
                           <th class="text-center">Tel.</th>
-                          <th class="text-center">FCT</th>
-                          <th class="text-center">DU</th>
-                          <th class="text-center">TR</th>
-                          <th class="text-center">TS</th>
-                          <th class="text-center">DT</th>
-                          <th class="text-center">ES</th>
-                          <th class="text-center">DE</th>
-                          <th class="text-center">AC</th>
+                          <th class="text-center">FCT cont</th>
+                          <th class="text-center">DUAL</th>
+                          <th class="text-center">TRA</th>
+                          <th class="text-center">TSEC</th>
+                          <th class="text-center">DeTRAB</th>
+                          <th class="text-center">EST</th>
+                          <th class="text-center">DeEST</th>
+                          <th class="text-center">Fecha</th>
                         </small>
                          </tr>
                        </thead>
@@ -284,7 +284,7 @@ $ScIKcont=0;
                                <td><small><?php echo $Inombrea; ?></small></td>
                                <td><small><?php echo $Imail; ?></small></td>
                                <td><small><?php echo $Itelefono; ?></small></td>
-                               <td class="text-center"><small><?php if ($IKcont=='SI') {$cIKcont++; echo 'X';}  ?></small></td>
+                               <td class="text-center"><small><?php if ($IKcont=='X') {$cIKcont++; echo 'X';}  ?></small></td>
                                <td class="text-center"><small><?php if ($IKdual=='DUAL') {$cIKdual++; echo 'X';}  ?></small></td>
 
                                <td class="text-center"><small><?php if ($Iact=='TRAB') {$cIact++; echo 'X';}  ?></small></td>
@@ -363,13 +363,15 @@ $sal=' <table class="table table-condensed table-bordered">
      <tr class="info text-center">
        <small>
       <th class="text-center">TOTALES</th>
-      <th class="text-center">FCT</th>
-      <th class="text-center">DU</th>
-      <th class="text-center">TR</th>
-      <th class="text-center">TS</th>
-      <th class="text-center">DT</th>
-      <th class="text-center">ES</th>
-      <th class="text-center">DE</th>
+
+      <th class="text-center">FCT cont</th>
+      <th class="text-center">DUAL</th>
+      <th class="text-center">TRA</th>
+      <th class="text-center">TSEC</th>
+      <th class="text-center">DeTRAB</th>
+      <th class="text-center">EST</th>
+      <th class="text-center">DeEST</th>
+
     </small>
      </tr>
    </thead>
