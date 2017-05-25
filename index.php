@@ -8,7 +8,18 @@ include './includes/conex.php';
 include "./includes/newmail.php";
 
 //IDIOMA
-if (isset($_GET['leng'])) {$_SESSION['leng']=$_GET['leng'];} else {$_SESSION['leng']=1;}
+if (isset($_GET['leng']))  {$_SESSION['leng']=$_GET['leng'];} else {$_SESSION['leng']=1;}
+
+
+if (isset($_GET['n'])) { ?>
+                          <br>
+                          <div class="alert alert-warning alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                  <p><?php echo $leng[5][$_SESSION['leng']]; ?></p>
+                           </div>
+                  <?php      }
+
+
 
 if (strlen($_POST['JILKcorreor'])>0)
 {
@@ -52,6 +63,7 @@ else {
 }
 
 
+
 }
 
 
@@ -74,6 +86,7 @@ if (strlen($_POST['JILKcorreo'])>0)
       if ($Idni>0){  $_SESSION['Idni'] = $Idni;  }
       header('Location: ./ikasle/index.php');
   }
+
 }
 ?>
 
@@ -100,7 +113,7 @@ if (strlen($_POST['JILKcorreo'])>0)
       			<div class="col-sm-6 col-md-4 col-md-offset-4">
       				<div class="panel panel-default">
       					<div class="panel-heading">
-      						<strong>JILK: CIFP TXURDINGA LHII     </strong><a href="index.php?leng=1" > ES</a> | <a href="index.php?leng=2" >EU </a>
+      						<strong>JILK: CIFP TXURDINGA LHII     </strong><a href="index.php?leng=1" > ES</a> | <a href="index.php?leng=2" >EU </a> | <a href="index.php?leng=3" >IN </a>
       					</div>
       					<div class="panel-body">
       						<form role="form" action="#" method="POST">

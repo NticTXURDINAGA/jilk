@@ -8,10 +8,10 @@ header("Expires: Sat, 1 Jul 2000 05:00:00 GMT"); // Fecha en el pasado
 
 include '../includes/lenguajes.php';
 
-if (!isset($_SESSION['Idni'])) {header('Location: ../index.php');}
+if (!isset($_SESSION['Idni'])) {header('Location: ../index.php?leng='.$_SESSION['leng'].'&n=0');}
 
 //IDIOMA
-if (isset($_GET['leng'])) {$_SESSION['leng']=$_GET['leng'];}
+if (isset($_GET['leng'])) {$_SESSION['leng']=$_GET['leng'];header('Location: index.php');}
 ?>
 
 <!DOCTYPE html>
@@ -264,10 +264,7 @@ while ($columna = mysqli_fetch_array( $resultado )) {
               </div>
             </div>
 
- <img class="profilelogo-img" src="../imagenes/logoTX.png" alt=""><a href="index.php?leng=1" > ES</a> | <a href="index.php?leng=2" >EU </a>
-
-
-
+ <img class="profilelogo-img" src="../imagenes/logoTX.png" alt=""><a href="index.php?leng=1" > ES</a> | <a href="index.php?leng=2" >EU </a> | <a href="index.php?leng=3" >IN </a>
 
 
 
@@ -295,13 +292,13 @@ while ($columna = mysqli_fetch_array( $resultado )) {
               }
              ?>
 
-            <img id='imgfoto' class="img-thumbnail" src="../imagenes/<?php echo $verFoto; ?>?ver=1.0" />
+            <img id='imgfoto' class="img-thumbnail" src="../imagenes/<?php echo $verFoto; ?>" />
 
             <p><a  data-toggle="collapse" href="#verfoto" aria-expanded="false" aria-controls="verfoto" class="btn"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> <?php echo $leng[9][$_SESSION['leng']]; ?> </a></p>
 
                   <div class="collapse" id="verfoto">
                     <div class="well">
-                      <form  class="form-inline" action="#" enctype="multipart/form-data" method="post" id='foto'>
+                      <form  class="form-inline" action="index.php" enctype="multipart/form-data" method="post" id='foto'>
 
                          <div class="form-group " >
                            <p><input  type="file" id="exampleInputFile" name="upload" ></p>
@@ -344,7 +341,7 @@ while ($columna = mysqli_fetch_array( $resultado )) {
           </div>
 
 
-      <form action="" method="post" id='general' >
+      <form action="index.php" method="post" id='general' >
 
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   <div class="panel panel-info" >
@@ -357,6 +354,8 @@ while ($columna = mysqli_fetch_array( $resultado )) {
     </div>
     <div id="collapseOne" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
+        <div><a href='#' onclick="guardar('general');"><span class="glyphicon glyphicon-floppy-disk" ></span> <?php echo $leng[10][$_SESSION['leng']]; ?></a></div>
+
                     <div class="input-group form-group">
                       <span class="input-group-addon">
                         <i class="glyphicon glyphicon-phone-alt"></i>
@@ -390,6 +389,7 @@ while ($columna = mysqli_fetch_array( $resultado )) {
     </div>
     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
       <div class="panel-body">
+        <a href='#' onclick="guardar('general');"><span class="glyphicon glyphicon-floppy-disk" ></span> <?php echo $leng[10][$_SESSION['leng']]; ?></a>
                     <div class="checkbox">
                       <label>
                       <input type="checkbox" name='Iact'  value='TRAB'
@@ -439,6 +439,7 @@ while ($columna = mysqli_fetch_array( $resultado )) {
     </div>
     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
       <div class="panel-body">
+        <a href='#' onclick="guardar('general');"><span class="glyphicon glyphicon-floppy-disk" ></span> <?php echo $leng[10][$_SESSION['leng']]; ?></a>
                       <div class="checkbox">
                         <label>
                           <input type="checkbox" name='Iest'  value='ESTU' <?php   if ($Iest=='ESTU') {echo "Checked";};     ?> > <?php echo $leng[23][$_SESSION['leng']]; ?>
@@ -464,6 +465,7 @@ while ($columna = mysqli_fetch_array( $resultado )) {
     </div>
     <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
       <div class="panel-body">
+        <a href='#' onclick="guardar('general');"><span class="glyphicon glyphicon-floppy-disk" ></span> <?php echo $leng[10][$_SESSION['leng']]; ?></a>
               <div class="alert alert-warning alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
