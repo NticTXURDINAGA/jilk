@@ -81,9 +81,9 @@ $leng[19][1]="Empresa actual";
 $leng[19][2]="Gaurko enpresa";
 $leng[19][3]="Current company";
 
-$leng[20][1]="Puede que el cambio de imagen tarde unos minutos, dependiendo de tu navegador.";
-$leng[20][2]="Agian berandu argazki aldaketa minutu batzuetan, zure nabigatzailearen arabera.";
-$leng[20][3]="The makeover may take a few minutes, depending on your browser.";
+$leng[20][1]="Puede que el cambio de imagen tarde unos minutos, dependiendo de tu navegador. Actualiza la pagina.";
+$leng[20][2]="Agian berandu argazki aldaketa minutu batzuetan, zure nabigatzailearen arabera. Eguneratu web orria.";
+$leng[20][3]="The makeover may take a few minutes, depending on your browser. Refresh your browser";
 
 $leng[21][1]="Empresa del Sector.";
 $leng[21][2]="Sektoreko Enpresa.";

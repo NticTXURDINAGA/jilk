@@ -1,3 +1,6 @@
+
+#NO CACHEAR IMAGENES
+
 <IfModule mod_expires.c>
 ExpiresActive On
 ExpiresByType image/gif A2
@@ -6,8 +9,7 @@ ExpiresByType image/jpeg A2
 ExpiresByType image/png A2
 ExpiresByType image/ico A2
 ExpiresByType image/bmp A2
-ExpiresByType text/css A2
-ExpiresByType text/javascript A2
-ExpiresByType application/javascript A2
-ExpiresByType application/x-javascript A2
 </ifmodule>
+
+#bloquear listado de archivos
+Options -Indexes

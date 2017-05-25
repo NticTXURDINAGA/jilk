@@ -88,15 +88,11 @@ $ScIKcont=0;
                        $Kurso=$columna['Kurso'];
                        $KursoM=str_replace('Fami','<b class="text-danger">Fami</b>',$Kurso);
                        $KursoM=str_replace('Grad','<b class="text-danger">Grad</b>',$KursoM);
-
-
-
                        //CONTAR ALUMNO
                       $nalumnos='SELECT count(Idni) as numero FROM `ik` WHERE `Kcod`="'.$Kcod.'"';
                       //echo $nalumnos;
                       $resultadoA = mysqli_query( $conexion, $nalumnos ) or die ( "Algo ha ido mal en la consulta a la base de datos DE ENTRADA");
                       while ($colum = mysqli_fetch_array( $resultadoA )) { $Nalumnos=$colum['numero'];        }
-
                       //CONTAR ALUMNOS
 ?>
 
@@ -255,12 +251,12 @@ $ScIKcont=0;
                                <td><small>
                                  <?php if (strlen($Icurri)>0) { ?>
                                     <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal<?php echo $Idni; ?>">
+                                    <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal<?php echo $Idni.$Kcod; ?>">
                                       <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
                                     </button>
 
                                     <!-- Modal -->
-                                    <div class="modal fade" id="myModal<?php echo $Idni; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                    <div class="modal fade" id="myModal<?php echo $Idni.$Kcod; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                       <div class="modal-dialog modal-lg" role="document">
                                         <div class="modal-content">
                                           <div class="modal-header">
@@ -288,7 +284,7 @@ $ScIKcont=0;
                                <td class="text-center"><small><?php if ($IKdual=='DUAL') {$cIKdual++; echo 'X';}  ?></small></td>
 
                                <td class="text-center"><small><?php if ($Iact=='TRAB') {$cIact++; echo 'X';}  ?></small></td>
-                               <td class="text-center"><small><?php if ($Iacts=='SI') {$cIacts++; echo 'X';} ?></small></td>
+                               <td class="text-center"><small><?php if ($Iacts=='X') {$cIacts++; echo 'X';} ?></small></td>
                                <td class="text-center"><small><?php if ($Idact=='DTRAB') {$cIdact++; echo 'X';} ?></small></td>
                                <td class="text-center"><small><?php if ($Iest=='ESTU') {$cIest++; echo 'X';} ?></small></td>
                                <td class="text-center"><small><?php if ($Idest=='DESTU') {$cIdest++; echo 'X';} ?></small></td>
@@ -363,7 +359,6 @@ $sal=' <table class="table table-condensed table-bordered">
      <tr class="info text-center">
        <small>
       <th class="text-center">TOTALES</th>
-
       <th class="text-center">FCT cont</th>
       <th class="text-center">DUAL</th>
       <th class="text-center">TRA</th>
@@ -371,7 +366,6 @@ $sal=' <table class="table table-condensed table-bordered">
       <th class="text-center">DeTRAB</th>
       <th class="text-center">EST</th>
       <th class="text-center">DeEST</th>
-
     </small>
      </tr>
    </thead>
@@ -400,7 +394,6 @@ $sal=' <table class="table table-condensed table-bordered">
   <td><small>'. round($ScIdest*100/$ScItotal,2).'% </small></td>
 </tr>
 </table>';
-
 if ($ScItotal!=0) {echo $sal;}
 //PRUEBA DE INFORM DE TOTALES //PRUEBA DE INFORM DE TOTALES //PRUEBA DE INFORM DE TOTALES
  ?>
@@ -409,7 +402,6 @@ if ($ScItotal!=0) {echo $sal;}
    <input type="hidden" class="form-control" id="pdf" value="<?php     echo htmlspecialchars($sal);     ?>" name="pdf">
    <button type="submit" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span> PDF</button>
  </form>
-
  -->
 
 
