@@ -170,46 +170,6 @@ while ($columna = mysqli_fetch_array( $resultado )) {
   <div class="container theme-showcase" role="main">
       <h3>no muestra</h3>
 
-      <div id="myCarousel" class="carousel slide">
-        <!-- Indicators -->
-          <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-          </ol>
-
-          <!-- Wrapper for slides -->
-          <div class="carousel-inner">
-            <div class="item active">
-              <div class="fill" style="background-image:url('http://placehold.it/1900x1080&amp;text=Slide One');"></div>
-              <div class="carousel-caption">
-                <h1>Modern Business - A Bootstrap 3 Template</h1>
-              </div>
-            </div>
-            <div class="item">
-              <div class="fill" style="background-image:url('http://placehold.it/1900x1080&amp;text=Slide Two');"></div>
-              <div class="carousel-caption">
-                <h1>Ready to Style &amp; Add Content</h1>
-              </div>
-            </div>
-            <div class="item">
-              <div class="fill" style="background-image:url('http://placehold.it/1900x1080&amp;text=Slide Three');"></div>
-              <div class="carousel-caption">
-                <h1>Additional Layout Options at <a href="http://startbootstrap.com">http://startbootstrap.com</a></h1>
-              </div>
-            </div>
-          </div>
-
-          <!-- Controls -->
-          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-            <span class="icon-prev"></span>
-          </a>
-          <a class="right carousel-control" href="#myCarousel" data-slide="next">
-            <span class="icon-next"></span>
-          </a>
-      </div>
-
-
       <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
           <!-- Brand and toggle get grouped for better mobile display -->
@@ -269,20 +229,12 @@ while ($columna = mysqli_fetch_array( $resultado )) {
 
 
 
-      <!--    <p><button type="submit" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span> Guardar</button></p> -->
-
-          <!-- FECHA DE ACCESO
-                     <div class="alert alert-warning alert-dismissible" role="alert">
-                       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-
-                       <strong>Última conexion:</strong> <?php     echo date('d-m-Y',strtotime($Itime));     ?>
-                      <strong> Tipo:</strong> <?php     echo $Itipo;     ?>
-                     </div>
-           FECHA DE ACCESO -->
-
 
           <div class="alert alert-info" role="alert">
             <h4><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $Inombrea; ?></h4>
+
+
+
 
             <?php
               if (file_exists('../imagenes/'.$_SESSION['Idni'].'.jpg')) {
@@ -354,7 +306,7 @@ while ($columna = mysqli_fetch_array( $resultado )) {
     </div>
     <div id="collapseOne" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
-        <div><a href='#' onclick="guardar('general');"><span class="glyphicon glyphicon-floppy-disk" ></span> <?php echo $leng[10][$_SESSION['leng']]; ?></a></div>
+        <p><a href='#' onclick="guardar('general');"><span class="glyphicon glyphicon-floppy-disk" ></span> <?php echo $leng[10][$_SESSION['leng']]; ?></a></p>
 
                     <div class="input-group form-group">
                       <span class="input-group-addon">
@@ -389,7 +341,7 @@ while ($columna = mysqli_fetch_array( $resultado )) {
     </div>
     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
       <div class="panel-body">
-        <a href='#' onclick="guardar('general');"><span class="glyphicon glyphicon-floppy-disk" ></span> <?php echo $leng[10][$_SESSION['leng']]; ?></a>
+        <p><a href='#' onclick="guardar('general');"><span class="glyphicon glyphicon-floppy-disk" ></span> <?php echo $leng[10][$_SESSION['leng']]; ?></a></p>
                     <div class="checkbox">
                       <label>
                       <input type="checkbox" name='Iact'  value='TRAB'
@@ -439,7 +391,7 @@ while ($columna = mysqli_fetch_array( $resultado )) {
     </div>
     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
       <div class="panel-body">
-        <a href='#' onclick="guardar('general');"><span class="glyphicon glyphicon-floppy-disk" ></span> <?php echo $leng[10][$_SESSION['leng']]; ?></a>
+        <p><a href='#' onclick="guardar('general');"><span class="glyphicon glyphicon-floppy-disk" ></span> <?php echo $leng[10][$_SESSION['leng']]; ?></a></p>
                       <div class="checkbox">
                         <label>
                           <input type="checkbox" name='Iest'  value='ESTU' <?php   if ($Iest=='ESTU') {echo "Checked";};     ?> > <?php echo $leng[23][$_SESSION['leng']]; ?>
@@ -465,7 +417,7 @@ while ($columna = mysqli_fetch_array( $resultado )) {
     </div>
     <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
       <div class="panel-body">
-        <a href='#' onclick="guardar('general');"><span class="glyphicon glyphicon-floppy-disk" ></span> <?php echo $leng[10][$_SESSION['leng']]; ?></a>
+        <p><a href='#' onclick="guardar('general');"><span class="glyphicon glyphicon-floppy-disk" ></span> <?php echo $leng[10][$_SESSION['leng']]; ?></a></p>
               <div class="alert alert-warning alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 

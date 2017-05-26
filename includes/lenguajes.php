@@ -16,10 +16,10 @@ $leng[3][3]="Enter";
 
 $leng[4][1]="¿ Olvidaste la contraseña ?";
 $leng[4][2]="¿ Pasahitza ahaztu duzu ?";
-$leng[4][3]="Forgot your password?";
+$leng[4][3]="¿ Forgot your password ?";
 
-$leng[5][1]="NO TIENES CUENTA";
-$leng[5][2]="EZ DAUKAZU KUENTARIK";
+$leng[5][1]="NO TIENES CUENTA o DATOS ACCESO ERRONEOS";
+$leng[5][2]="EZ DAUKAZU KONTARIK edo SARBIDE DATA OKERRA";
 $leng[5][3]="YOU DO NOT HAVE AN ACCOUNT";
 
 $leng[6][1]="RECORDAR CONTRASEÑA";
@@ -73,8 +73,8 @@ $leng[17][1]="SITUACION ACADEMICA";
 $leng[17][2]="EGOERA HEZIGARRIA";
 $leng[17][3]="ACADEMIC SITUATION";
 
-$leng[18][1]="En Activo.";
-$leng[18][2]="Lanean.";
+$leng[18][1]="Estoy actualmente trabajando.";
+$leng[18][2]="Lanean nago.";
 $leng[18][3]="In Active.";
 
 $leng[19][1]="Empresa actual";
@@ -85,28 +85,28 @@ $leng[20][1]="Puede que el cambio de imagen tarde unos minutos, dependiendo de t
 $leng[20][2]="Agian berandu argazki aldaketa minutu batzuetan, zure nabigatzailearen arabera. Eguneratu web orria.";
 $leng[20][3]="The makeover may take a few minutes, depending on your browser. Refresh your browser";
 
-$leng[21][1]="Empresa del Sector.";
-$leng[21][2]="Sektoreko Enpresa.";
+$leng[21][1]="Empresa relacionada con los estudios realizados en el centro.";
+$leng[21][2]="Zentroan ikasitakoarekin erlazionatutako Enpresa .";
 $leng[21][3]="Company of the Sector.";
 
-$leng[22][1]="Demandas ofertas laborales.";
-$leng[22][2]="Eskaintza laboralak eskatu ezazu.";
+$leng[22][1]="Estoy interesado en recibir ofertar de trabajo.";
+$leng[22][2]="Lan eskaintzak jaso nahi ditut.";
 $leng[22][3]="Demands job offers.";
 
-$leng[23][1]="Estudias.";
-$leng[23][2]="Ikasten.";
+$leng[23][1]="Actualmente estoy estudiando.";
+$leng[23][2]="Ikasten nago.";
 $leng[23][3]="Do you study.";
 
-$leng[24][1]="Demandas Formación.";
-$leng[24][2]="Heziketa eskatu ezazu.";
+$leng[24][1]="Estoy interesado en recibir información sobre cursos de nuestro centro.";
+$leng[24][2]="Gure zentroko ikastaroen informazioa jaso nahi dut.";
 $leng[24][3]="Requests Training.";
 
 $leng[25][1]="Última conexion:";
 $leng[25][2]="Azken conexioa:";
 $leng[25][3]="Last connection:";
 
-$leng[26][1]="Texto explicativo sobre la insercion del Curriculum y sobre temas de formato y demas .....bla bla bla...";
-$leng[26][2]="Curriculum-eko insercion-aren gainean eta formatu-gaien gaineko testu esplikatiboa eta demas-a .....bla bla bla...";
+$leng[26][1]="Inserta tu CURRICULUM en cualquier formato, el sistema busca independientemente del formato. Puedes incluso Copiar y Pegar de otros sitios; Word, Pdf ...";
+$leng[26][2]="Sartu CURRICULUMa edozein formatutan, sistemak formatua edozein izanda ere egiten du bilaketa. Beste lekuetatik ere Kopiatu eta Itsatsi dezakezu, Word, Pdf ...";
 $leng[26][3]="Explanatory text on the insertion of the Curriculum and on subjects of format and others ..... bla bla bla ...";
 
 $leng[27][1]="Empresa";
@@ -114,7 +114,7 @@ $leng[27][2]="Enpresa";
 $leng[27][3]="Company";
 
 $leng[28][1]="Continuidad";
-$leng[28][2]="Jarraimena";
+$leng[28][2]="Jarraipena";
 $leng[28][3]="Continuity";
 
 $leng[29][1]="";

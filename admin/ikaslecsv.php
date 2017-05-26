@@ -150,6 +150,7 @@ if (!mysqli_query($conexion,$cik)) { $CerrorC=$CerrorC.' ERROR RELACION: '.$dato
               <p><b>Usuario:</b> tu correo electronico, posteriormente puedes cambiarlo.</p>
               <p><b>Contraseña:</b> el DNI con letra, posteriormente puedes cambiarla.</p>
               <br>
+              <p>TEXTO LOPD : <span style="color:red;">PENDIENTE</span> </p>
               <br>
               <h3>Muchas gracias por tu colaboración y un saludo.</h3>
               ';
