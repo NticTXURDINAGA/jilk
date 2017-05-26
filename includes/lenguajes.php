@@ -107,7 +107,7 @@ $leng[25][3]="Last connection:";
 
 $leng[26][1]="Inserta tu CURRICULUM en cualquier formato, el sistema busca independientemente del formato. Puedes incluso Copiar y Pegar de otros sitios; Word, Pdf ...";
 $leng[26][2]="Sartu CURRICULUMa edozein formatutan, sistemak formatua edozein izanda ere egiten du bilaketa. Beste lekuetatik ere Kopiatu eta Itsatsi dezakezu, Word, Pdf ...";
-$leng[26][3]="Explanatory text on the insertion of the Curriculum and on subjects of format and others ..... bla bla bla ...";
+$leng[26][3]="You can insert your CURRICULUM in any format, the system searches independently of the format. You can even Copy and Paste from other sites; Word, Pdf ...";
 
 $leng[27][1]="Empresa";
 $leng[27][2]="Enpresa";

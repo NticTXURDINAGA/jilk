@@ -13,7 +13,7 @@ if (isset($_GET['leng']))  {$_SESSION['leng']=$_GET['leng'];} else {$_SESSION['l
 
 if (isset($_GET['n'])) { ?>
                           <br>
-                          <div class="alert alert-warning alert-dismissible" role="alert">
+                          <div class="alert alert-danger alert-dismissible" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                   <p><?php echo $leng[5][$_SESSION['leng']]; ?></p>
                            </div>
@@ -51,15 +51,16 @@ if (strlen($_POST['JILKcorreor'])>0)
 
    }
 else {
+  if (!isset($_GET['n'])) {
   ?>
   <br>
-  <div class="alert alert-warning alert-dismissible" role="alert">
+  <div class="alert alert-danger alert-dismissible" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
           <p><?php echo $leng[5][$_SESSION['leng']]; ?></p>
    </div>
   <?php
-
+                    }
 }
 
 
@@ -116,7 +117,7 @@ if (strlen($_POST['JILKcorreo'])>0)
       						<strong>JILK: CIFP TXURDINGA LHII     </strong><a href="index.php?leng=1" > ES</a> | <a href="index.php?leng=2" >EU </a> | <a href="index.php?leng=3" >IN </a>
       					</div>
       					<div class="panel-body">
-      						<form role="form" action="#" method="POST">
+      						<form role="form" action="" method="POST">
       							<fieldset>
       								<div class="row">
       									<div class="center-block">
