@@ -180,7 +180,7 @@ while ($columna = mysqli_fetch_array( $resultado )) {
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href=""><span class="glyphicon glyphicon-home" aria-hidden="true"></span> JILK Txurdinaga</a>
+            <a class="navbar-brand" href=""><span class="glyphicon glyphicon-home" aria-hidden="true"></span> JILK </a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->

@@ -114,7 +114,7 @@ if (strlen($_POST['JILKcorreo'])>0)
       			<div class="col-sm-6 col-md-4 col-md-offset-4">
       				<div class="panel panel-default">
       					<div class="panel-heading">
-      						<strong>JILK: CIFP TXURDINGA LHII     </strong><a href="index.php?leng=1" > ES</a> | <a href="index.php?leng=2" >EU </a> | <a href="index.php?leng=3" >IN </a>
+      						<strong>JILK     </strong><a href="index.php?leng=1" > ES</a> | <a href="index.php?leng=2" >EU </a> | <a href="index.php?leng=3" >IN </a>
       					</div>
       					<div class="panel-body">
       						<form role="form" action="" method="POST">
