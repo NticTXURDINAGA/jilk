@@ -3,14 +3,15 @@ function nuevomail($asunto,$destinatarios,$html)
 {
 include "../phpmailer/class.phpmailer.php";
 include "../phpmailer/class.smtp.php";
+include "../includes/mail.php";
 
 $from_name = "CIFP TXURDINAGA LHII (JILK)";
 
 
 $phpmailer = new PHPMailer();
 // ---------- datos de la cuenta de Gmail -------------------------------
-$phpmailer->Username = "jilk_no_replay@fptxurdinaga.com";
-$phpmailer->Password = "Provisional123456";
+$phpmailer->Username = $MailUserGmail;
+$phpmailer->Password = $MailPass;
 //-----------------------------------------------------------------------
 // $phpmailer->SMTPDebug = 1;
 $phpmailer->SMTPSecure = 'ssl';
